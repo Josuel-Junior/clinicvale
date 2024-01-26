@@ -1,18 +1,28 @@
 import { useState } from "react";
-import { AppBar, Toolbar, useMediaQuery, useTheme, Box, Button, Typography, Modal, Divider, ListItemIcon, IconButton } from "@mui/material"
+import {
+    AppBar,
+    Toolbar,
+    useMediaQuery,
+    useTheme,
+    Box, Button,
+    Typography,
+    Modal,
+    Divider,
+    Collapse
+} from "@mui/material"
 
 import { styled, alpha } from '@mui/material/styles';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
+
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { infoAboutCompany, itemNavBar } from "../../contexts/texts";
+import { infoAboutCompany, itemNavBar, itemSubNavBar } from "../../constants/texts";
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
-import CallIcon from '@mui/icons-material/Call';
-import Logo from '../../../assets/logo_clinic_vale.svg'
+// import Logo from '../../../assets/logo_clinic_vale.svg'
+import Logo2 from '../../../assets/logo_clinic_vale2.png'
 
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -27,7 +37,6 @@ interface IInfo {
     whatsapp: string;
 }
 
-
 export const NavBar: React.FC = () => {
 
     const theme = useTheme();
@@ -35,7 +44,9 @@ export const NavBar: React.FC = () => {
 
     const [laboratory, setLaboratory] = useState<IInfo>(infoAboutCompany[0])
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const [openModal, setOpenModal] = useState(false);
+    const [openModal, setModal] = useState(false);
+    const [buttonActive, setButtonActive] = useState<number>(0)
+    const [menuExpands, setMenuExpands] = useState<boolean[]>(Array(itemNavBar.length).fill(false));
 
     const open = Boolean(anchorEl);
 
@@ -44,16 +55,21 @@ export const NavBar: React.FC = () => {
         setAnchorEl(event.currentTarget);
     };
 
-
     const handleSetlaboratory = (index: number) => {
-        handleOpenModel()
-        handleCloseOptions()
+        handleOpenAndCloseModal()
+        handleCloseOptionsLaboratory()
         setLaboratory(infoAboutCompany[index])
     };
 
-    const handleCloseOptions = () => setAnchorEl(null);
-    const handleOpenModel = () => setOpenModal(true);
-    const handleCloseModal = () => setOpenModal(false);
+    const handleCloseOptionsLaboratory = () => setAnchorEl(null);
+
+    const handleOpenAndCloseModal = () => setModal((prev) => !prev);
+
+    const handleMenuExpand = (index: number, isExpanded: boolean) => {
+        const newMenuExpands = [...menuExpands];
+        newMenuExpands[index] = isExpanded;
+        setMenuExpands(newMenuExpands);
+    };
 
     const StyledMenu = styled((props: MenuProps) => (
         <Menu
@@ -74,7 +90,7 @@ export const NavBar: React.FC = () => {
             marginTop: theme.spacing(1),
             minWidth: 180,
             color:
-                theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
+                "rgb(55, 65, 81)",
             boxShadow:
                 'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
             '& .MuiMenu-list': {
@@ -96,7 +112,7 @@ export const NavBar: React.FC = () => {
         },
     }));
 
-    const [buttonActive, setButtonActive] = useState<number>(0)
+
 
     const handleButtonActive = (buttonActive: number) => setButtonActive(buttonActive)
 
@@ -107,14 +123,11 @@ export const NavBar: React.FC = () => {
         borderRadius: "0px"
     };
 
-
-
-
     return (
         <AppBar sx={{ background: `${theme.palette.background.paper}`, display: "flex", alignItems: "center" }}>
             <Box maxWidth="lg" sx={{ background: "", width: "100%", display: "flex", justifyContent: "end", alignItems: "center" }}>
                 <Box sx={{ gap: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    {!isMatch && (<Typography color="primary" fontSize={{ md: "1rem" }}>{laboratory?.city}</Typography>)}
+                    {!isMatch && (<Typography color="#4f4f4f" fontSize={{ md: "1rem" }}>{laboratory?.city}</Typography>)}
                     <Button variant="outlined" color="primary" size="small" href={"tel:+5535999007141"} target="_blank">
                         <PhoneAndroidIcon fontSize="small" color="primary" sx={{ mx: "5px" }} />
                         {laboratory?.call}
@@ -129,6 +142,7 @@ export const NavBar: React.FC = () => {
                     disableElevation
                     onClick={handleClick}
                     endIcon={<KeyboardArrowDownIcon />}
+                    size="small"
                     sx={{ mx: "24px", my: "5px" }}
                 >
                     Unidades
@@ -140,7 +154,7 @@ export const NavBar: React.FC = () => {
                     }}
                     anchorEl={anchorEl}
                     open={open}
-                    onClose={handleCloseOptions}
+                    onClose={handleCloseOptionsLaboratory}
                 >
                     {infoAboutCompany.map((itemCityInfo: IInfo, index: number) => {
                         return (
@@ -156,7 +170,7 @@ export const NavBar: React.FC = () => {
             </Box>
             <Divider color="primary" />
             <Box maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", width: "100%", background: "" }}>
-                <Box component="img" src={`${Logo}`} sx={{ width: isMatch ? "70px" : "80px", mt: isMatch ? "0px" : "-40px", ml: "10px" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
+                <Box component="img" src={`${Logo2}`} sx={{ width: isMatch ? "200px" : "300px", mt: isMatch ? "0px" : "-40px", ml: "10px", background: "" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
                 {
                     isMatch ? (
                         <Box sx={{ display: "flex" }}>
@@ -165,31 +179,43 @@ export const NavBar: React.FC = () => {
 
                     ) :
                         <Toolbar>
-
                             <Box sx={{ display: "flex", gap: "20px" }}>
-                                {itemNavBar.map((item: string, index: number) => {
-                                    return (
-                                        buttonActive === index ?
-                                            <Button key={index} variant="text" size="small" style={buttonStyle} onClick={() => handleButtonActive(index)} sx={{
-                                                color: "#aa5913", transition: "all .3s",
-
+                                {itemNavBar.map((item: string, index: number) => (
+                                    <Box key={index} onMouseEnter={() => handleMenuExpand(index, true)}
+                                        onMouseLeave={() => handleMenuExpand(index, false)}>
+                                        <Button
+                                            variant="text"
+                                            size="small"
+                                            style={buttonStyle}
+                                            onClick={() => handleButtonActive(index)}
+                                            sx={{
+                                                color: buttonActive === index ? "#aa5913" : "#4f4f4f",
+                                                transition: "all .3s",
                                                 "&:hover": {
-                                                    color: "#aa5913"
-                                                }, borderBottom: 1, borderColor: "#aa5913"
-
-                                            }}>
-                                                {item}
-                                            </Button> : <Button key={index} variant="text" size="small" style={buttonStyle} onClick={() => handleButtonActive(index)} sx={{
-                                                color: "#4f4f4f", transition: "all .3s",
-                                                "&:hover": {
-                                                    color: "#aa5913"
-                                                }, borderBottom: 0
-
-                                            }}>
-                                                {item}
-                                            </Button>
-                                    )
-                                })}
+                                                    color: "#aa5913",
+                                                },
+                                                borderBottom: buttonActive === index ? 1 : 0,
+                                                borderColor: "#aa5913",
+                                            }}
+                                        >
+                                            {item}
+                                        </Button>
+                                        <Collapse in={menuExpands[index]} sx={{ position: "absolute" }}>
+                                            <Box sx={{ background: "#fff", mt: "10px" }}>
+                                                {index === 1 && itemSubNavBar[0].map((element: string, subIndex: number) => (
+                                                    <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element + subIndex}>
+                                                        {element}
+                                                    </MenuItem>
+                                                ))}
+                                                {index === 3 && itemSubNavBar[1].map((element: string, subIndex: number) => (
+                                                    <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element + subIndex}>
+                                                        {element}
+                                                    </MenuItem>
+                                                ))}
+                                            </Box>
+                                        </Collapse>
+                                    </Box>
+                                ))}
                                 <Button variant="contained">
                                     RESULTADO DE EXAMES
                                 </Button>
@@ -199,7 +225,7 @@ export const NavBar: React.FC = () => {
             </Box>
             <Modal
                 open={openModal}
-                onClose={handleCloseModal}
+                onClose={handleOpenAndCloseModal}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
@@ -209,7 +235,7 @@ export const NavBar: React.FC = () => {
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
                     width: 400,
-                    maxWidth: "80%",
+                    maxWidth: "70%",
                     bgcolor: 'background.paper',
                     boxShadow: 24,
                     p: 5,
@@ -218,14 +244,14 @@ export const NavBar: React.FC = () => {
                     <Divider />
                     <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", py: "15px" }}>
 
-                        <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ fontWeight: "bold" }}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                             Unidade: {laboratory.city}
                         </Typography>
                         <Box>
-                            <Typography id="modal-modal-descriptionm" sx={{ mt: 2 }}>
+                            <Typography id="modal-modal-descriptionm" sx={{ mt: 2, fontSize: "1.1rem" }}>
                                 Telefone: {laboratory.call}
                             </Typography>
-                            <Typography id="modal-modal-descriptionmm" sx={{ mt: 2 }}>
+                            <Typography id="modal-modal-descriptionmm" sx={{ mt: 2, fontSize: "1.1rem" }}>
                                 Endereço:{laboratory.address}
                             </Typography>
                         </Box>
@@ -247,7 +273,7 @@ export const NavBar: React.FC = () => {
                         </Box>
                     </Box>
                     <Divider />
-                    <Button sx={{ position: "absolute", right: "0" }} onClick={handleCloseModal}>
+                    <Button sx={{ position: "absolute", right: "0" }} onClick={handleOpenAndCloseModal}>
                         <CloseIcon />
                     </Button>
                 </Box>
