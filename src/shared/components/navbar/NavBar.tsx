@@ -27,6 +27,7 @@ import Logo2 from '../../../assets/logo_clinic_vale2.png'
 import CloseIcon from '@mui/icons-material/Close';
 
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import { DrawerComponent } from "../drawer/DrawerComponent";
 
 
 interface IInfo {
@@ -174,7 +175,8 @@ export const NavBar: React.FC = () => {
                 {
                     isMatch ? (
                         <Box sx={{ display: "flex" }}>
-                            {/* <DrawerComponent /> */}
+                            <DrawerComponent />
+
                         </Box>
 
                     ) :
@@ -216,7 +218,7 @@ export const NavBar: React.FC = () => {
                                         </Collapse>
                                     </Box>
                                 ))}
-                                <Button variant="contained">
+                                <Button variant="contained" size="small">
                                     RESULTADO DE EXAMES
                                 </Button>
                             </Box>
