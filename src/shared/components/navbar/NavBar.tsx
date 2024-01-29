@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { debounce } from 'lodash';
 import {
     AppBar,
     Toolbar,
@@ -10,13 +11,12 @@ import {
     Divider,
     Collapse
 } from "@mui/material"
-
 import { styled, alpha } from '@mui/material/styles';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { infoAboutCompany, itemNavBar, itemSubNavBar } from "../../constants/texts";
+import { infoAboutCompany, itemSubNavBar } from "../../constants/texts";
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -43,18 +43,28 @@ export const NavBar: React.FC = () => {
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
+    const [openMouseHover, setOpenMouseHover] = useState<string | null>(String);
+
     const [laboratory, setLaboratory] = useState<IInfo>(infoAboutCompany[0])
+
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
     const [openModal, setModal] = useState(false);
-    const [buttonActive, setButtonActive] = useState<number>(0)
-    const [menuExpands, setMenuExpands] = useState<boolean[]>(Array(itemNavBar.length).fill(false));
 
-    const open = Boolean(anchorEl);
+    const [buttonActive, setButtonActive] = useState("home");
 
+    const openOptionsLaboratory = Boolean(anchorEl);
 
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    const [isVisible, setIsVisible] = useState(false);
+
+ 
+    const handleOpenOptionsLaboratory = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
+
+    const handleMouseHover = (event: string | null) => {
+        setOpenMouseHover(event)
+    }
 
     const handleSetlaboratory = (index: number) => {
         handleOpenAndCloseModal()
@@ -66,11 +76,23 @@ export const NavBar: React.FC = () => {
 
     const handleOpenAndCloseModal = () => setModal((prev) => !prev);
 
-    const handleMenuExpand = (index: number, isExpanded: boolean) => {
-        const newMenuExpands = [...menuExpands];
-        newMenuExpands[index] = isExpanded;
-        setMenuExpands(newMenuExpands);
-    };
+    const toggleVisibility = debounce(() => {
+        const scrollHeight = window.scrollY;
+        if (Math.round(scrollHeight) > 0) {
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+    }, 200);
+
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisibility);
+        return () => {
+            window.removeEventListener('scroll', toggleVisibility);
+        };
+    }, []);
+
+
 
     const StyledMenu = styled((props: MenuProps) => (
         <Menu
@@ -113,10 +135,6 @@ export const NavBar: React.FC = () => {
         },
     }));
 
-
-
-    const handleButtonActive = (buttonActive: number) => setButtonActive(buttonActive)
-
     const buttonStyle = {
         background: 'none',
         padding: 0,
@@ -126,98 +144,166 @@ export const NavBar: React.FC = () => {
 
     return (
         <AppBar sx={{ background: `${theme.palette.background.paper}`, display: "flex", alignItems: "center" }}>
-            <Box maxWidth="lg" sx={{ background: "", width: "100%", display: "flex", justifyContent: "end", alignItems: "center" }}>
-                <Box sx={{ gap: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    {!isMatch && (<Typography color="#4f4f4f" fontSize={{ md: "1rem" }}>{laboratory?.city}</Typography>)}
-                    <Button variant="outlined" color="primary" size="small" href={"tel:+5535999007141"} target="_blank">
-                        <PhoneAndroidIcon fontSize="small" color="primary" sx={{ mx: "5px" }} />
-                        {laboratory?.call}
+            <Collapse in={isVisible} timeout={500} sx={{ maxWidth: "1200px", width: "100%" }}>
+                <Box maxWidth="lg" sx={{ width: "100%", display: "flex", justifyContent: "end", alignItems: "center" }}>
+                    <Box sx={{ gap: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        {!isMatch && (<Typography color="#4f4f4f" fontSize={{ md: "1rem" }}>{laboratory?.city}</Typography>)}
+                        <Button variant="outlined" color="primary" size="small" href={"tel:+5535999007141"} target="_blank">
+                            <PhoneAndroidIcon fontSize="small" color="primary" sx={{ mx: "5px" }} />
+                            {laboratory?.call}
+                        </Button>
+                    </Box>
+                    <Button
+                        id="demo-customized-button"
+                        aria-controls={openOptionsLaboratory ? 'demo-customized-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openOptionsLaboratory ? 'true' : undefined}
+                        variant="contained"
+                        disableElevation
+                        onClick={handleOpenOptionsLaboratory}
+                        endIcon={<KeyboardArrowDownIcon />}
+                        size="small"
+                        sx={{ mx: "24px", my: "5px" }}
+                    >
+                        Unidades
                     </Button>
+                    <StyledMenu
+                        id="demo-customized-menu"
+                        MenuListProps={{
+                            'aria-labelledby': 'demo-customized-button',
+                        }}
+                        anchorEl={anchorEl}
+                        open={openOptionsLaboratory}
+                        onClose={handleCloseOptionsLaboratory}
+                    >
+                        {infoAboutCompany.map((itemCityInfo: IInfo, index: number) => {
+                            return (
+                                <Box key={itemCityInfo.city}>
+                                    <MenuItem onClick={() => handleSetlaboratory(index)} disableRipple>
+                                        <LocationOnIcon />
+                                        {itemCityInfo.city}
+                                    </MenuItem>
+                                </Box>
+                            )
+                        })}
+                    </StyledMenu>
                 </Box>
-                <Button
-                    id="demo-customized-button"
-                    aria-controls={open ? 'demo-customized-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    variant="contained"
-                    disableElevation
-                    onClick={handleClick}
-                    endIcon={<KeyboardArrowDownIcon />}
-                    size="small"
-                    sx={{ mx: "24px", my: "5px" }}
-                >
-                    Unidades
-                </Button>
-                <StyledMenu
-                    id="demo-customized-menu"
-                    MenuListProps={{
-                        'aria-labelledby': 'demo-customized-button',
-                    }}
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleCloseOptionsLaboratory}
-                >
-                    {infoAboutCompany.map((itemCityInfo: IInfo, index: number) => {
-                        return (
-                            <Box key={itemCityInfo.city}>
-                                <MenuItem onClick={() => handleSetlaboratory(index)} disableRipple>
-                                    <LocationOnIcon />
-                                    {itemCityInfo.city}
-                                </MenuItem>
-                            </Box>
-                        )
-                    })}
-                </StyledMenu>
-            </Box>
+            </Collapse>
             <Divider color="primary" />
             <Box maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", width: "100%", background: "" }}>
-                <Box component="img" src={`${Logo2}`} sx={{ width: isMatch ? "200px" : "300px", mt: isMatch ? "0px" : "-40px", ml: "10px", background: "" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
+                <Box component="img" src={`${Logo2}`} sx={{ width: isMatch ? "200px" : "200px", mt: isMatch ? "0px" : "0px", ml: "10px", background: "" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
                 {
                     isMatch ? (
                         <Box sx={{ display: "flex" }}>
                             <DrawerComponent />
-
                         </Box>
-
                     ) :
                         <Toolbar>
-                            <Box sx={{ display: "flex", gap: "20px" }}>
-                                {itemNavBar.map((item: string, index: number) => (
-                                    <Box key={index} onMouseEnter={() => handleMenuExpand(index, true)}
-                                        onMouseLeave={() => handleMenuExpand(index, false)}>
-                                        <Button
-                                            variant="text"
-                                            size="small"
-                                            style={buttonStyle}
-                                            onClick={() => handleButtonActive(index)}
-                                            sx={{
-                                                color: buttonActive === index ? "#aa5913" : "#4f4f4f",
-                                                transition: "all .3s",
-                                                "&:hover": {
-                                                    color: "#aa5913",
-                                                },
-                                                borderBottom: buttonActive === index ? 1 : 0,
-                                                borderColor: "#aa5913",
-                                            }}
-                                        >
-                                            {item}
-                                        </Button>
-                                        <Collapse in={menuExpands[index]} sx={{ position: "absolute" }}>
-                                            <Box sx={{ background: "#fff", mt: "10px" }}>
-                                                {index === 1 && itemSubNavBar[0].map((element: string, subIndex: number) => (
-                                                    <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element + subIndex}>
-                                                        {element}
-                                                    </MenuItem>
-                                                ))}
-                                                {index === 3 && itemSubNavBar[1].map((element: string, subIndex: number) => (
-                                                    <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element + subIndex}>
-                                                        {element}
-                                                    </MenuItem>
-                                                ))}
-                                            </Box>
-                                        </Collapse>
-                                    </Box>
-                                ))}
+                            <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
+                                <Button
+                                    variant="text"
+                                    style={buttonStyle}
+                                    onClick={() => setButtonActive("home")}
+                                    sx={{
+                                        fontSize: ".8rem", color: buttonActive === "home" ? "#aa5913" : "#4f4f4f",
+                                        transition: "all .3s",
+                                        "&:hover": {
+                                            color: "#aa5913", fontWeight: "bold"
+                                        },
+                                        borderBottom: buttonActive === "home" ? 1 : 0,
+                                        borderColor: "#aa5913"
+                                    }}
+                                >
+                                    Home
+                                </Button>
+                                <Box onMouseEnter={() => handleMouseHover("sobreNos")}
+                                    onMouseLeave={() => handleMouseHover(null)}
+                                >
+                                    <Button
+                                        variant="text"
+                                        style={buttonStyle}
+                                        onClick={() => setButtonActive("sobreNos")}
+
+                                        sx={{
+                                            fontSize: ".8rem", color: buttonActive === "sobreNos" ? "#aa5913" : "#4f4f4f",
+                                            transition: "all .3s",
+                                            "&:hover": {
+                                                color: "#aa5913",
+                                            },
+                                            borderBottom: buttonActive === "sobreNos" ? 1 : 0,
+                                            borderColor: "#aa5913", fontWeight: "bold"
+                                        }}
+                                    >
+                                        Sobre Nós
+                                    </Button>
+                                    <Collapse in={openMouseHover === "sobreNos"} sx={{ position: "absolute", background: "#fff" }}>
+                                        {itemSubNavBar[0].map((element: string) => (
+                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element}>
+                                                {element}
+                                            </MenuItem>
+                                        ))}
+                                    </Collapse>
+                                </Box>
+
+                                <Button
+                                    variant="text"
+                                    style={buttonStyle}
+                                    onClick={() => setButtonActive("exames")}
+                                    sx={{
+                                        fontSize: ".8rem", color: buttonActive === "exames" ? "#aa5913" : "#4f4f4f",
+                                        transition: "all .3s",
+                                        "&:hover": {
+                                            color: "#aa5913",
+                                        },
+                                        borderBottom: buttonActive === "exames" ? 1 : 0,
+                                        borderColor: "#aa5913", fontWeight: "bold"
+                                    }}
+                                >
+                                    Exames
+                                </Button>
+                                <Box key="Serviços" onMouseEnter={() => handleMouseHover("servicos")}
+                                    onMouseLeave={() => handleMouseHover(null)}>
+                                    <Button
+                                        variant="text"
+                                        style={buttonStyle}
+                                        onClick={() => setButtonActive("servicos")}
+                                        sx={{
+                                            fontSize: ".8rem", color: buttonActive === "servicos" ? "#aa5913" : "#4f4f4f",
+                                            transition: "all .3s",
+                                            "&:hover": {
+                                                color: "#aa5913",
+                                            },
+                                            borderBottom: buttonActive === "servicos" ? 1 : 0,
+                                            borderColor: "#aa5913", fontWeight: "bold"
+                                        }}
+                                    >
+                                        Serviços
+                                    </Button>
+
+                                    <Collapse in={openMouseHover === "servicos"} sx={{ position: "absolute", background: "#fff" }}>
+                                        {itemSubNavBar[1].map((element: string) => (
+                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element}>
+                                                {element}
+                                            </MenuItem>
+                                        ))}
+                                    </Collapse>
+                                </Box>
+                                <Button
+                                    variant="text"
+                                    style={buttonStyle}
+                                    onClick={() => setButtonActive("contato")}
+                                    sx={{
+                                        fontSize: ".8rem", color: buttonActive === "contato" ? "#aa5913" : "#4f4f4f",
+                                        transition: "all .3s",
+                                        "&:hover": {
+                                            color: "#aa5913",
+                                        },
+                                        borderBottom: buttonActive === "contato" ? 1 : 0,
+                                        borderColor: "#aa5913", fontWeight: "bold"
+                                    }}
+                                >
+                                    Contato
+                                </Button>
                                 <Button variant="contained" size="small">
                                     RESULTADO DE EXAMES
                                 </Button>
@@ -245,7 +331,6 @@ export const NavBar: React.FC = () => {
                 }}>
                     <Divider />
                     <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", py: "15px" }}>
-
                         <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                             Unidade: {laboratory.city}
                         </Typography>
@@ -263,7 +348,6 @@ export const NavBar: React.FC = () => {
                                 "&:hover": {
                                     background: "#04413a"
                                 }, my: "10px", width: "160px"
-
                             }}>
                                 <WhatsAppIcon fontSize="small" color="secondary" sx={{ mx: "5px", }} />
                                 {laboratory.call}
