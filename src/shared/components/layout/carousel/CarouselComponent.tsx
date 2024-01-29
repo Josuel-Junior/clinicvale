@@ -6,6 +6,8 @@ import { Box } from '@mui/material'
 
 import image1 from "../../../../assets/images/image1.png"
 import image2 from "../../../../assets/images/image2.png"
+import image3 from "../../../../assets/images/image3.png"
+import image4 from "../../../../assets/images/image4.png"
 
 
 
@@ -24,6 +26,16 @@ export const CarouselComponent: React.FC = () => {
         {
             image: image2,
             description: "Image2",
+        },
+
+        {
+            image: image3,
+            description: "Image3",
+        },
+
+        {
+            image: image4,
+            description: "Image4",
         }
     ]
 
@@ -37,13 +49,23 @@ export const CarouselComponent: React.FC = () => {
             swipe={true}
             indicators={false}
             animation={'fade'}
+            duration={800}
             fullHeightHover={true}
+            interval={7000}
+
         >
+
             {
                 imageCrousel.map((itemImage: IImagesCarousel) => {
                     return (
-                        <Box sx={{ width: "100vw", background: "red", height: "100vh" }}>
-                            <Box component="img" src={itemImage.image} alt={itemImage.description} key={itemImage.description} sx={{ height: "100%", width: "100%" }} />
+                        <Box sx={{ width: '100vw', height: '80vh' }}>
+                            <Box
+                                component="img"
+                                src={itemImage.image}
+                                alt={itemImage.description}
+                                key={itemImage.description}
+                                sx={{ height: '100%', width: '100%', filter: "brightness(40%)" }}
+                            />
                         </Box>
                     )
                 })

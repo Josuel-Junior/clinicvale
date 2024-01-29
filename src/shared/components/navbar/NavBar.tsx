@@ -55,7 +55,7 @@ export const NavBar: React.FC = () => {
 
     const openOptionsLaboratory = Boolean(anchorEl);
 
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
 
  
     const handleOpenOptionsLaboratory = (event: React.MouseEvent<HTMLElement>) => {
@@ -87,6 +87,7 @@ export const NavBar: React.FC = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', toggleVisibility);
+
         return () => {
             window.removeEventListener('scroll', toggleVisibility);
         };
@@ -330,7 +331,7 @@ export const NavBar: React.FC = () => {
                     borderRadius: "15px"
                 }}>
                     <Divider />
-                    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", py: "15px" }}>
+                    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", py: "25px" }}>
                         <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                             Unidade: {laboratory.city}
                         </Typography>
