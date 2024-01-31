@@ -1,3 +1,17 @@
+import microscopio from '../../assets/icons/microscopio.png';
+import book from '../../assets/icons/e-book.png';
+import location from '../../assets/icons/location.png';
+import newIcon from '../../assets/icons/new.png';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import BiotechIcon from '@mui/icons-material/Biotech';
+import PlaceIcon from '@mui/icons-material/Place';
+import FiberNewIcon from '@mui/icons-material/FiberNew';
+
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+
+
+
+
 export const infoAboutCompany = [{ city: "Natércia - MG - Matriz", address: " Rua Pref. José Nacacio, 21 - Centro, Natércia - MG, 37524-000", call: "(35) 3456-1381", map: "https://maps.app.goo.gl/gqrJcopBqmxQySGo6", whatsapp: "3534561381" },
 { city: "Heliodora - MG", address: " Praça Santa Izabel, 139 - Centro, Heliodora - MG, 37484-000", call: "(35) 99906-2122", map: "https://maps.app.goo.gl/PVWegh4NjMn9a9zD8", whatsapp: "35999062122" },
 { city: "São Sebastião da Bela Vista - MG", address: " Rua Wilson Openheimer, 10 - centro, São Sebastião da Bela Vista - MG, 37567-000", call: "(35) 99763-7182", map: "https://maps.app.goo.gl/FpqQcMLu43jjbx9W6", whatsapp: "35997637182" },
@@ -18,3 +32,5 @@ export const navigateDrawer = [
     { page: "Contato", iconPage: "", navigate: "contact" },
   ]
   
+export const infoCardHome = [{title:"Resultado de exames", iconMain: microscopio, iconArrow:"arrow_forward"},
+{title:"Nossa Historia", iconMain:book, iconArrow:"arrow_forward"},{title:"Unidades", iconMain:location, iconArrow:"arrow_forward"},{title:"Novidades", iconMain:newIcon, iconArrow:"arrow_forward"}]

@@ -41,8 +41,6 @@ export const CarouselComponent: React.FC = () => {
 
 
     return (
-
-
         <Carousel
             autoPlay={true}
             cycleNavigation={true}
@@ -52,19 +50,18 @@ export const CarouselComponent: React.FC = () => {
             duration={800}
             fullHeightHover={true}
             interval={7000}
-
+            height="82vh"
         >
-
             {
                 imageCrousel.map((itemImage: IImagesCarousel) => {
                     return (
-                        <Box sx={{ width: '100vw', height: '80vh' }}>
+                        <Box>
                             <Box
                                 component="img"
                                 src={itemImage.image}
                                 alt={itemImage.description}
                                 key={itemImage.description}
-                                sx={{ height: '100%', width: '100%', filter: "brightness(40%)" }}
+                                sx={{ height: '80vh', width: '100%', filter: "brightness(40%)" }}
                             />
                         </Box>
                     )
