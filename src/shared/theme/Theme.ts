@@ -33,13 +33,13 @@ export const Theme = createTheme({
             color: "#4f4f4f"
         },
         h1: {
-            color: "#aa5913"
+            color: "#FB8423"
         },
         h2: {
-            color: "#aa5913"
+            color: "#FB8423"
         },
         h3: {
-            color: "#aa5913"
+            color: "#FB8423"
         },
         h5: {
             color: "#4f4f4f"

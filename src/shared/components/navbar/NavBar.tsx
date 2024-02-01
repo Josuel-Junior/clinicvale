@@ -21,8 +21,8 @@ import { infoAboutCompany, itemSubNavBar } from "../../constants/texts";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
-// import Logo from '../../../assets/logo_clinic_vale.svg'
-import Logo2 from '../../../assets/logo_clinic_vale2.png'
+import Logo from '../../../assets/logo_clinic_vale.png'
+// import Logo2 from '../../../assets/logo_clinic_vale2.png'
 
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -192,7 +192,7 @@ export const NavBar: React.FC = () => {
             </Collapse>
             <Divider color="primary" />
             <Box maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", width: "100%", background: "" }}>
-                <Box component="img" src={`${Logo2}`} sx={{ width: isMatch ? "200px" : "200px", mt: isMatch ? "0px" : "0px", ml: "10px", background: "" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
+                <Box component="img" src={`${Logo}`} sx={{ width: isMatch ? "200px" : "170px", mt: isMatch ? "0px" : "0px", ml: "10px", background: "", height:"45px" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
                 {
                     isMatch ? (
                         <Box sx={{ display: "flex" }}>

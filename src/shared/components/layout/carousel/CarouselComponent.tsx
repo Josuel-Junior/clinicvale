@@ -1,13 +1,21 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel'
 
-import { Box } from '@mui/material'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
 
 
-import image1 from "../../../../assets/images/image1.png"
-import image2 from "../../../../assets/images/image2.png"
-import image3 from "../../../../assets/images/image3.png"
-import image4 from "../../../../assets/images/image4.png"
+import slide_carousel_mobile1 from "../../../../assets/images/slide_carousel_mobile1.png"
+import slide_carousel_mobile2 from "../../../../assets/images/slide_carousel_mobile2.png"
+import slide_carousel_mobile3 from "../../../../assets/images/slide_carousel_mobile3.png"
+import slide_carousel_mobile4 from "../../../../assets/images/slide_carousel_mobile4.png"
+
+
+
+
+import slide_carousel1 from "../../../../assets/images/slide_carousel1.png"
+import slide_carousel2 from "../../../../assets/images/slide_carousel2.png"
+import slide_carousel3 from "../../../../assets/images/slide_carousel3.png"
+import slide_carousel4 from "../../../../assets/images/slide_carousel4.png"
 
 
 
@@ -18,23 +26,29 @@ interface IImagesCarousel {
 
 export const CarouselComponent: React.FC = () => {
 
+
+    const theme = useTheme();
+
+    const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+
+
     const imageCrousel = [
         {
-            image: image1,
+            image: isMatch ? slide_carousel_mobile1 : slide_carousel1,
             description: "Image1",
         },
         {
-            image: image2,
+            image: isMatch ? slide_carousel_mobile2 : slide_carousel2,
             description: "Image2",
         },
 
         {
-            image: image3,
+            image: isMatch ? slide_carousel_mobile3 : slide_carousel3,
             description: "Image3",
         },
 
         {
-            image: image4,
+            image: isMatch ? slide_carousel_mobile4 : slide_carousel4,
             description: "Image4",
         }
     ]
@@ -47,9 +61,9 @@ export const CarouselComponent: React.FC = () => {
             swipe={true}
             indicators={false}
             animation={'fade'}
-            duration={800}
+            duration={900}
             fullHeightHover={true}
-            interval={7000}
+            interval={4000}
             height="82vh"
         >
             {
