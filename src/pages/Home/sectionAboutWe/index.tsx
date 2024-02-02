@@ -31,7 +31,7 @@ export const SectionAboutWe: React.FC = () => {
                     </Fade>
                     <Slide triggerOnce>
                         <Typography sx={{ mt: "15px" }} paragraph>
-                            No <span style={{ fontWeight: 'bold', color: "" }}>LABORATÓRIO CLINIC VALE, </span>estamos empenhados em oferecer serviços laboratoriais de
+                            No <span style={{ fontWeight: 'bold'}}>LABORATÓRIO CLINIC VALE, </span>estamos empenhados em oferecer serviços laboratoriais de
                             qualidade e confiabilidade, consolidando nossa posição como uma instituição comprometida com a excelência.
                             Nossa missão é conduzir análises
                             clínicas com superioridade, preservando os valores de responsabilidade social, sigilo e respeito aos nossos clientes.
@@ -49,7 +49,7 @@ export const SectionAboutWe: React.FC = () => {
                 </Grid>
                 <Grid xs={12} md={6}>
                     <Slide direction="right" triggerOnce>
-                        <Box component="img" width="100%" src={aboutWeImage} />
+                        <Box component="img" width="100%" src={aboutWeImage} alt="Ícone sobre serviços"/>
                     </Slide>
                 </Grid>
 
