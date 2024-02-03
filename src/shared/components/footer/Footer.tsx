@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Box, Button, Divider, Typography, useMediaQuery, useTheme } from "@mui/material"
 
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -7,6 +8,57 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
 import { infoAboutCompany } from "../../constants/texts";
+import { useEffect, useState } from "react";
+
+// import { Client, GetPageInfoRequest, GetPageMediaRequest,GetPageMediaResponse } from 'instagram-graph-api';
+
+//   const client: Client = new Client("IGQWRPOVNfNHBGdFBoZAllBSUJacWJKd0JoQV9vZADZAjSlBYaXgtVS1uTDV4RVdVS1VZAaXktWFpjMkJkVjRWbTZAUNXNUdG1pemNNamQtalpIUU9VVzdmMEZAJWkxfOWFoVlhkaGJ5cUhsdVlSRlZAvZAzNHZAUVDSVRJeFEZD", "36303003755");
+
+//   const pageInfoRequest: GetPageInfoRequest = client.newGetPageInfoRequest();
+//   const pageMediaRequest: GetPageMediaRequest = client.newGetPageMediaRequest();
+
+
+
+//   console.log(pageInfoRequest)
+//   console.log(pageMediaRequest)
+
+// import { GetPageInfoRequest, GetPageInfoResponse } from 'instagram-graph-api';
+
+//   const request: GetPageInfoRequest = new GetPageInfoRequest("IGQWRPOVNfNHBGdFBoZAllBSUJacWJKd0JoQV9vZADZAjSlBYaXgtVS1uTDV4RVdVS1VZAaXktWFpjMkJkVjRWbTZAUNXNUdG1pemNNamQtalpIUU9VVzdmMEZAJWkxfOWFoVlhkaGJ5cUhsdVlSRlZAvZAzNHZAUVDSVRJeFEZD", "36303003755");
+
+// request.execute().then((response: GetPageInfoResponse) => {
+//     console.log(`The page ${response.getName()} has ${response.getFollowers()} followers.`);
+// });
+
+
+
+
+
+
+// async function getPageId(pageName:string, accessToken:string) {
+//     try {
+//         const response = await axios.get(`https://graph.facebook.com/v12.0/${pageName}?fields=id&access_token=${accessToken}`);
+//         const pageId = response.data.id;
+//         return pageId;
+//     } catch (error) {
+//         console.error('Erro ao obter ID da página:');
+//         throw error;
+//     }
+// }
+
+// // Exemplo de uso
+// const pageName = '5774826259238370';
+// const accessToken = 'IGQWRPOVNfNHBGdFBoZAllBSUJacWJKd0JoQV9vZADZAjSlBYaXgtVS1uTDV4RVdVS1VZAaXktWFpjMkJkVjRWbTZAUNXNUdG1pemNNamQtalpIUU9VVzdmMEZAJWkxfOWFoVlhkaGJ5cUhsdVlSRlZAvZAzNHZAUVDSVRJeFEZD';
+
+// getPageId(pageName, accessToken)
+//     .then((pageId) => {
+//         console.log('ID da página:', pageId);
+//         // Agora você pode usar esse ID na sua classe GetPageInfoRequest
+//     })
+//     .catch((error) => {
+//         // Lida com o erro
+//     });
+
 
 
 
@@ -21,7 +73,23 @@ interface IInfo {
 
 export const Navbar: React.FC = () => {
 
+    // const [feedList, setFeedList] = useState([]);
 
+    // async function getInstaFeed() {
+    //     const token = "IGQWRPOVNfNHBGdFBoZAllBSUJacWJKd0JoQV9vZADZAjSlBYaXgtVS1uTDV4RVdVS1VZAaXktWFpjMkJkVjRWbTZAUNXNUdG1pemNNamQtalpIUU9VVzdmMEZAJWkxfOWFoVlhkaGJ5cUhsdVlSRlZAvZAzNHZAUVDSVRJeFEZD";
+    //     const fields = "media_url,media_type,permalink";
+    //     const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
+
+    //     const { data } = await axios.get(url);
+    //     setFeedList(data.data);
+    // }
+
+    // useEffect(() => {
+    //     getInstaFeed()
+    // }, []);
+
+
+    // console.log(feedList)
     const theme = useTheme();
 
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));

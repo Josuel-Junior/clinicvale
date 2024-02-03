@@ -1,0 +1,1 @@
+export const creatingArray = (length: number): number[] => Array.from({ length }, (_, i) => i);

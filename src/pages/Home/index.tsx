@@ -5,6 +5,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2"
 import { infoCardHome } from "../../shared/constants/texts"
 import { SectionAboutWe } from "./sectionAboutWe"
 import { InfoAboutWe } from "./sectionInfoAboutWe/InfoAboutWe"
+import { CarouselInstaFeed } from "../../shared/components/layout/carouselInstaFeed/CarouselInstaFeed"
 
 
 interface infoCard {
@@ -105,6 +106,10 @@ export const Home: React.FC = () => {
             </Container>
 
             <InfoAboutWe />
+
+            <Box sx={{display:"flex", alignItems:"center", justifyContent:"center",width:"100%", minHeight:"60vh", my:"30px"}}>
+                <CarouselInstaFeed />
+            </Box>
         </Box>
 
 

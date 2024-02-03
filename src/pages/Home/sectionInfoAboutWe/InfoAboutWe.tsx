@@ -32,7 +32,7 @@ export const InfoAboutWe: React.FC = () => {
                         <Typography sx={{
                             fontSize: {
                                 xs: ".9rem",
-                                sm: ".1rem",
+                                sm: ".9rem",
                                 md: "1.1rem",
 
                             }, mt: "5px", color: "#fff"
