@@ -2,12 +2,6 @@ import microscopio from '../../assets/icons/microscopio.png';
 import book from '../../assets/icons/e-book.png';
 import location from '../../assets/icons/location.png';
 import newIcon from '../../assets/icons/new.png';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import BiotechIcon from '@mui/icons-material/Biotech';
-import PlaceIcon from '@mui/icons-material/Place';
-import FiberNewIcon from '@mui/icons-material/FiberNew';
-
-import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 
 
@@ -25,12 +19,12 @@ export const itemNavBar = ["Home", "Sobre Nós", "Exames", "Serviços", "Contato
 export const itemSubNavBar = [["Sobre Nós", "Certificados", "Unidades de coleta", "Notícias"], ["Atendimento domiciliar", "Coleta Empresarial"]];
 
 export const navigateDrawer = [
-    { page: "Home", iconPage: "", navigate: "" },
-    { page: "Sobre nós", iconPage: "", navigate: "aboutwe" },
-    { page: "Exames", iconPage: "", navigate: "exams" },
-    { page: "Serviços", iconPage: "", navigate: "services" },
-    { page: "Contato", iconPage: "", navigate: "contact" },
-  ]
-  
-export const infoCardHome = [{title:"Resultado de exames", iconMain: microscopio, iconArrow:"arrow_forward"},
-{title:"Nossa Historia", iconMain:book, iconArrow:"arrow_forward"},{title:"Unidades", iconMain:location, iconArrow:"arrow_forward"},{title:"Novidades", iconMain:newIcon, iconArrow:"arrow_forward"}]
+  { page: "Home", iconPage: "", navigate: "" },
+  { page: "Sobre nós", iconPage: "", navigate: "aboutwe" },
+  { page: "Exames", iconPage: "", navigate: "exams" },
+  { page: "Serviços", iconPage: "", navigate: "services" },
+  { page: "Contato", iconPage: "", navigate: "contact" },
+]
+
+export const infoCardHome = [{ title: "Resultado de exames", iconMain: microscopio, iconArrow: "arrow_forward" },
+{ title: "Nossa Historia", iconMain: book, iconArrow: "arrow_forward" }, { title: "Unidades", iconMain: location, iconArrow: "arrow_forward" }, { title: "Novidades", iconMain: newIcon, iconArrow: "arrow_forward" }]

@@ -5,7 +5,7 @@ import InfoAboutWeImage from "../../../assets/images/InfoAboutWeImage.png"
 
 import { Parallax } from 'react-parallax';
 
-import React from "react";
+
 
 export const InfoAboutWe: React.FC = () => {
 
@@ -14,7 +14,7 @@ export const InfoAboutWe: React.FC = () => {
         <Box >
             <Parallax blur={0} bgImage={InfoAboutWeImage} bgImageAlt="the cat" strength={200}>
                 <Box sx={{ width: "100vw" }}>
-                    <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", minHeight: '50vh' }}>
+                    <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", minHeight: '60vh' }}>
 
 
                         <Typography component="h2" sx={{
@@ -29,7 +29,7 @@ export const InfoAboutWe: React.FC = () => {
                         }}>
                             CONHEÇA TODAS AS NOSSAS UNIDADES DE COLETA
                         </Typography>
-                        <Typography sx={{
+                        <Typography paragraph sx={{
                             fontSize: {
                                 xs: ".9rem",
                                 sm: ".9rem",

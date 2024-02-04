@@ -11,6 +11,7 @@ import 'swiper/css/pagination';
 import { SkeletonCoponent } from "../../skeleton/Skeleton";
 
 
+
 interface ApiResponse {
     id: string
     media_type: string
@@ -18,11 +19,13 @@ interface ApiResponse {
     permalink: string
 }
 
+
 export const CarouselInstaFeed: React.FC = () => {
 
     const [dataInstaFeed, setDataInstaFeed] = useState<ApiResponse[]>()
 
     const [loading, setLoading] = useState<boolean>(true)
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,10 +39,13 @@ export const CarouselInstaFeed: React.FC = () => {
                     },
                 });
 
+
                 const { data } = response.data
                 const images = data.filter((dataApi: ApiResponse) => dataApi.media_type === "IMAGE")
                 setDataInstaFeed(images.slice(0, 9))
+
                 setLoading(false)
+
             }
             catch (error) {
                 console.error(error)
