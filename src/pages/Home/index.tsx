@@ -6,6 +6,7 @@ import { infoCardHome } from "../../shared/constants/texts"
 import { SectionAboutWe } from "./sectionAboutWe"
 import { InfoAboutWe } from "./sectionInfoAboutWe/InfoAboutWe"
 import { CarouselInstaFeed } from "../../shared/components/layout/carouselInstaFeed/CarouselInstaFeed"
+import { ScrollRestoration } from "react-router-dom"
 
 
 interface infoCard {
@@ -23,6 +24,7 @@ export const Home: React.FC = () => {
 
     return (
         <Box>
+            <ScrollRestoration />
             <Box sx={{ position: "relative" }}>
                 <CarouselComponent>
                 </CarouselComponent>
@@ -107,7 +109,7 @@ export const Home: React.FC = () => {
 
             <InfoAboutWe />
 
-            <Box sx={{display:"flex", alignItems:"center", justifyContent:"center",width:"100%", minHeight:"60vh", my:"30px"}}>
+            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", minHeight: "60vh", my: "30px" }}>
                 <CarouselInstaFeed />
             </Box>
         </Box>

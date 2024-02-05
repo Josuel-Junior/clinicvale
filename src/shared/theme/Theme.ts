@@ -8,7 +8,7 @@ export const Theme = createTheme({
             dark: "#aa5913",
             light: "#f59949",
             contrastText: "#ffffff",
-            
+
         },
         secondary: {
             main: "#fff",
@@ -20,7 +20,7 @@ export const Theme = createTheme({
             default: "#f7f6f3",
             paper: "#ffffff",
         },
-        
+
 
     },
     typography: {
@@ -42,7 +42,7 @@ export const Theme = createTheme({
             color: "#FB8423"
         },
         h5: {
-            color: "#4f4f4f"
+            color: "#FB8423"
         }
 
     }

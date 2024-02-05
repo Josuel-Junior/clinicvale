@@ -9,62 +9,76 @@ import { Box, Button, Divider, Typography } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
 import { LayoutSectionInitial } from '../../shared/components/layout/layoutInitialSection/LayoutSectionInitial';
 
+import { Slide } from 'react-awesome-reveal';
+import { ScrollRestoration } from 'react-router-dom';
+
 export const Contact: React.FC = () => {
 
 
     return (
         <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-
+            <ScrollRestoration />
             <LayoutSectionInitial background={slide_carousel2} text="Entre em contato" subText='Nossa equipe de profissionais está pronta para atendê-lo.' />
 
             <Grid container maxWidth="lg" sx={{ width: "100%", height: "80vh", display: "flex", alignItems: "center" }}>
                 <Grid md={6} xs={12} sx={{ background: "", padding: "10px" }}>
-                    <Typography sx={{ my: "20px" }}>
-                        Bem-vindo à nossa página de contato! Estamos aqui para ajudar e responder a todas as suas
-                        perguntas. Se você precisar de assistência ou informações adicionais, não hesite em entrar em contato conosco.
-                    </Typography>
-                    <Grid md={12} sx={{ my: "7px" }}>
-                        <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-                            <Typography color="#4f4f4f" sx={{ fontWeight: "bold" }}>
-                                AGENDAMENTOS
-                            </Typography>
-                            <Button variant="text" href={"tel:+553534561381"} aria-label="Link que direciona para o instagram" target="_blank" sx={{ color: "#4f4f4f" }}>
-                                <CalendarMonthIcon sx={{ color: "#4f4f4f", mr: "5px" }} />
-                                (35)3456-1381
-                            </Button>
-                        </Box>
-                    </Grid>
-                    <Divider />
-                    <Grid md={12} sx={{ my: "7px" }}>
-                        <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-                            <Typography color="#4f4f4f" sx={{ fontWeight: "bold" }}>
-                                WHATSAPP
-                            </Typography>
-                            <Button variant="text" href={"https://wa.me/553534561381"} aria-label="Link que direciona para o instagram" target="_blank" sx={{ color: "#4f4f4f" }}>
-                                <WhatsAppIcon sx={{ color: "#4f4f4f", mr: "5px" }} />
-                                (35)3456-1381
-                            </Button>
-                        </Box>
-                    </Grid>
-                    <Divider />
-                    <Grid md={12} sx={{ my: "7px" }}>
-                        <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-                            <Typography color="#4f4f4f" sx={{ fontWeight: "bold" }}>
-                                E-MAIL
-                            </Typography>
-                            <Button variant="text" href="mailto:contato@clinicvalelab.com?subject=Dúvida sobre Exames" aria-label="Link que direciona para o instagram" target="_blank" sx={{ color: "#4f4f4f" }}>
-                                <EmailIcon sx={{ color: "#4f4f4f", mr: "5px" }} />
-                                clinicvale@gmail.com
-                            </Button>
-                        </Box>
-                    </Grid>
-
+                    <Slide triggerOnce>
+                        <Typography sx={{ my: "20px" }}>
+                            Bem-vindo à nossa página de contato! Estamos aqui para ajudar e responder a todas as suas
+                            perguntas. Se você precisar de assistência ou informações adicionais, não hesite em entrar em contato conosco.
+                        </Typography>
+                    </Slide>
+                    <Slide triggerOnce>
+                        <Grid md={12} sx={{ my: "7px" }}>
+                            <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+                                <Typography variant='h5' sx={{ fontWeight: "bold" }}>
+                                    AGENDAMENTOS
+                                </Typography>
+                                <Button variant="text" href={"tel:+553534561381"} aria-label="Link que direciona para o instagram" target="_blank" sx={{ color: "#4f4f4f" }}>
+                                    <CalendarMonthIcon sx={{ color: "#4E598C", mr: "5px" }} />
+                                    (35)3456-1381
+                                </Button>
+                            </Box>
+                        </Grid>
+                        <Divider />
+                    </Slide>
+                    <Slide triggerOnce>
+                        <Grid md={12} sx={{ my: "7px" }}>
+                            <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+                                <Typography variant='h5' sx={{ fontWeight: "bold" }}>
+                                    WHATSAPP
+                                </Typography>
+                                <Button variant="text" href={"https://wa.me/553534561381"} aria-label="Link que direciona para o instagram" target="_blank" sx={{ color: "#4f4f4f" }}>
+                                    <WhatsAppIcon sx={{ color: "#008000", mr: "5px" }} />
+                                    (35)3456-1381
+                                </Button>
+                            </Box>
+                        </Grid>
+                        <Divider />
+                    </Slide>
+                    <Slide triggerOnce>
+                        <Grid md={12} sx={{ my: "7px" }}>
+                            <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+                                <Typography variant='h5' sx={{ fontWeight: "bold" }}>
+                                    E-MAIL
+                                </Typography>
+                                <Button variant="text" href="mailto:contato@clinicvalelab.com?subject=Dúvida sobre Exames" aria-label="Link que direciona para o instagram" target="_blank" sx={{ color: "#4f4f4f" }}>
+                                    <EmailIcon sx={{ color: "#FCB667", mr: "5px" }} />
+                                    clinicvale@gmail.com
+                                </Button>
+                            </Box>
+                        </Grid>
+                    </Slide>
 
 
                 </Grid>
 
                 <Grid md={6} xs={0}>
-                    <Box component="img" src={contactImage} sx={{ width: "100%", height: "100%", borderRadius: "15px" }} />
+
+                    <Slide direction='right' triggerOnce>
+
+                        <Box component="img" src={contactImage} sx={{ width: "100%", height: "100%", borderRadius: "15px" }} />
+                    </Slide>
 
                 </Grid>
             </Grid>

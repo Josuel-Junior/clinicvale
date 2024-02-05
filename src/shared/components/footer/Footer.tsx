@@ -7,6 +7,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
 import { infoAboutCompany } from "../../constants/texts";
+import { useNavigate } from "react-router-dom";
 
 
 interface IInfo {
@@ -25,6 +26,8 @@ export const Navbar: React.FC = () => {
 
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
+    const navigate = useNavigate()
+
 
     const styleBorderLeft = {
         borderTop: '1px solid #fff',
@@ -37,8 +40,6 @@ export const Navbar: React.FC = () => {
 
     return (
         <Box>
-
-
             <Box sx={{ width: "100vw", background: "#FB8423", display: "flex", justifyContent: "center", alignContent: "center", flexDirection: "" }}>
                 <Grid container maxWidth="lg" sx={{ background: "", width: "90%", my: "25px" }}>
                     <Grid xs={12} md={4} sx={{ display: "flex", flexDirection: "column", justifyContent: "center", py: "10px" }}>
@@ -48,7 +49,7 @@ export const Navbar: React.FC = () => {
                         <Box sx={{ display: "flex", flexDirection: "column", background: "", alignItems: "start" }}>
                             {infoAboutCompany.map((itemLaboratory: IInfo) => {
                                 return (
-                                    <Button variant="text" color="secondary" key={itemLaboratory.city}>
+                                    <Button variant="text" color="secondary" key={itemLaboratory.city} onClick={()=> navigate("/units")}>
                                         {itemLaboratory.city}
                                     </Button>
 

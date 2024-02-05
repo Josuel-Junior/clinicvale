@@ -1,7 +1,9 @@
 import { LayoutSectionInitial } from "../../shared/components/layout/layoutInitialSection/LayoutSectionInitial"
+import { ScrollRestoration } from "react-router-dom";
 
 import aboutWeInitialSection from "../../assets/images/aboutWeInitialSection.png"
 import { Box, Container, Typography } from "@mui/material"
+import { Fade } from "react-awesome-reveal"
 
 export const AboutWe: React.FC = () => {
 
@@ -9,12 +11,15 @@ export const AboutWe: React.FC = () => {
     return (
 
         <Box>
+            <ScrollRestoration />
             <LayoutSectionInitial background={aboutWeInitialSection} text="Conheça Nossa História" />
 
             <Container sx={{ my: "30px" }}>
-                <Typography component="h2" sx={{ textAlign: "center", fontWeight: "bold", my: "10px" }}>
-                    Clinic Vale Laboratório de Análises Clínicas
-                </Typography>
+                <Fade direction='up' triggerOnce>
+                    <Typography component="h2" variant="h5" sx={{ textAlign: "center", fontWeight: "bold", my: "10px" }}>
+                        Clinic Vale Laboratório de Análises Clínicas
+                    </Typography>
+                </Fade>
                 <Typography paragraph>
                     Há treze anos, um compromisso incansável com a precisão e a qualidade na área de análises clínicas deu
                     origem à Clinic Vale. Estabelecida em Natércia, MG, nossa matriz é o ponto central de uma história marcada por

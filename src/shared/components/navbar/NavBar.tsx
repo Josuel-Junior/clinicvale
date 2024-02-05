@@ -37,6 +37,7 @@ interface IInfo {
     call: string;
     map: string;
     whatsapp: string;
+    image?:any
 }
 
 export const NavBar: React.FC = () => {
@@ -89,6 +90,8 @@ export const NavBar: React.FC = () => {
     }, 200);
 
     const navigateButton = (buttonActive: string) => {
+
+        console.log(buttonActive)
         setButtonActive(buttonActive)
         navigate(`/${buttonActive}`)
     }
@@ -150,6 +153,11 @@ export const NavBar: React.FC = () => {
         cursor: 'pointer',
         borderRadius: "0px"
     };
+
+    const paramsNavigate = [["aboutwe","certification","units"],[]]
+
+    
+    console.log(paramsNavigate[0][0])
 
     return (
         <AppBar sx={{ background: `${theme.palette.background.paper}`, display: "flex", alignItems: "center" }}>
@@ -246,8 +254,8 @@ export const NavBar: React.FC = () => {
                                         Sobre Nós
                                     </Button>
                                     <Collapse in={openMouseHover === "sobreNos"} sx={{ position: "absolute", background: "#fff" }}>
-                                        {itemSubNavBar[0].map((element: string) => (
-                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element}>
+                                        {itemSubNavBar[0].map((element: string, index:number) => (
+                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element} onClick={()=>navigateButton(paramsNavigate[0][index])}>
                                                 {element}
                                             </MenuItem>
                                         ))}
