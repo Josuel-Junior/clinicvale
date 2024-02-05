@@ -28,6 +28,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import { DrawerComponent } from "../drawer/DrawerComponent";
+import { useNavigate } from "react-router-dom";
 
 
 interface IInfo {
@@ -43,6 +44,8 @@ export const NavBar: React.FC = () => {
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
+    const navigate = useNavigate();
+
     const [openMouseHover, setOpenMouseHover] = useState<string | null>(String);
 
     const [laboratory, setLaboratory] = useState<IInfo>(infoAboutCompany[0])
@@ -57,7 +60,7 @@ export const NavBar: React.FC = () => {
 
     const [isVisible, setIsVisible] = useState(true);
 
- 
+
     const handleOpenOptionsLaboratory = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -84,6 +87,11 @@ export const NavBar: React.FC = () => {
             setIsVisible(true);
         }
     }, 200);
+
+    const navigateButton = (buttonActive: string) => {
+        setButtonActive(buttonActive)
+        navigate(`/${buttonActive}`)
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', toggleVisibility);
@@ -192,7 +200,7 @@ export const NavBar: React.FC = () => {
             </Collapse>
             <Divider color="primary" />
             <Box maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", width: "100%", background: "" }}>
-                <Box component="img" src={`${Logo}`} sx={{ width: isMatch ? "200px" : "170px", mt: isMatch ? "0px" : "0px", ml: "10px", background: "", height:"45px" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
+                <Box component="img" src={`${Logo}`} sx={{ width: isMatch ? "200px" : "170px", mt: isMatch ? "0px" : "0px", ml: "10px", background: "", height: "45px" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
                 {
                     isMatch ? (
                         <Box sx={{ display: "flex" }}>
@@ -204,7 +212,7 @@ export const NavBar: React.FC = () => {
                                 <Button
                                     variant="text"
                                     style={buttonStyle}
-                                    onClick={() => setButtonActive("home")}
+                                    onClick={() => navigateButton("home")}
                                     sx={{
                                         fontSize: ".8rem", color: buttonActive === "home" ? "#aa5913" : "#4f4f4f",
                                         transition: "all .3s",
@@ -223,15 +231,15 @@ export const NavBar: React.FC = () => {
                                     <Button
                                         variant="text"
                                         style={buttonStyle}
-                                        onClick={() => setButtonActive("sobreNos")}
+                                        onClick={() => navigateButton("aboutwe")}
 
                                         sx={{
-                                            fontSize: ".8rem", color: buttonActive === "sobreNos" ? "#aa5913" : "#4f4f4f",
+                                            fontSize: ".8rem", color: buttonActive === "aboutwe" ? "#aa5913" : "#4f4f4f",
                                             transition: "all .3s",
                                             "&:hover": {
                                                 color: "#aa5913",
                                             },
-                                            borderBottom: buttonActive === "sobreNos" ? 1 : 0,
+                                            borderBottom: buttonActive === "aboutwe" ? 1 : 0,
                                             borderColor: "#aa5913", fontWeight: "bold"
                                         }}
                                     >
@@ -292,14 +300,14 @@ export const NavBar: React.FC = () => {
                                 <Button
                                     variant="text"
                                     style={buttonStyle}
-                                    onClick={() => setButtonActive("contato")}
+                                    onClick={() => navigateButton("contact")}
                                     sx={{
-                                        fontSize: ".8rem", color: buttonActive === "contato" ? "#aa5913" : "#4f4f4f",
+                                        fontSize: ".8rem", color: buttonActive === "contact" ? "#aa5913" : "#4f4f4f",
                                         transition: "all .3s",
                                         "&:hover": {
                                             color: "#aa5913",
                                         },
-                                        borderBottom: buttonActive === "contato" ? 1 : 0,
+                                        borderBottom: buttonActive === "contact" ? 1 : 0,
                                         borderColor: "#aa5913", fontWeight: "bold"
                                     }}
                                 >

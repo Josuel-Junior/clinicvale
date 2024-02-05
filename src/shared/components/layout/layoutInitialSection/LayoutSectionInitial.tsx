@@ -6,10 +6,11 @@ import { Box, Container, Typography } from "@mui/material";
 interface ILayoutSectionInitial {
     background: any;
     text: string;
+    subText?: string;
 }
 
 
-export const LayoutSectionInitial: React.FC<ILayoutSectionInitial> = ({ background, text }) => {
+export const LayoutSectionInitial: React.FC<ILayoutSectionInitial> = ({ background, text,subText }) => {
 
     return (
 
@@ -26,7 +27,7 @@ export const LayoutSectionInitial: React.FC<ILayoutSectionInitial> = ({ backgrou
 
                         }, color: "#fff"
                     }}>
-                        Entre em Contato
+                        {text}
                     </Typography>
                     <Typography paragraph sx={{
                         fontSize: {
@@ -36,7 +37,8 @@ export const LayoutSectionInitial: React.FC<ILayoutSectionInitial> = ({ backgrou
 
                         }, mt: "5px", color: "#fff"
                     }}>
-                        Nossa equipe de profissionais está pronta para atendê-lo.
+                        {subText}
+                        
                     </Typography>
                 </Container>
             </Box>
