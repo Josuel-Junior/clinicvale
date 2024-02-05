@@ -6,7 +6,11 @@ import { infoCardHome } from "../../shared/constants/texts"
 import { SectionAboutWe } from "./sectionAboutWe"
 import { InfoAboutWe } from "./sectionInfoAboutWe/InfoAboutWe"
 import { CarouselInstaFeed } from "../../shared/components/layout/carouselInstaFeed/CarouselInstaFeed"
-import { ScrollRestoration } from "react-router-dom"
+import { ScrollRestoration, useNavigate } from "react-router-dom"
+import { scroller } from 'react-scroll';
+
+
+
 
 
 interface infoCard {
@@ -20,6 +24,26 @@ export const Home: React.FC = () => {
     const theme = useTheme();
 
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+
+    const navigate = useNavigate()
+
+    const handleNavigate = (action: string) => {
+        if (action == "Resultado de exames") {
+            window.open('https://portal.worklabweb.com.br/resultados-on-line/234', '_blank');
+        }
+        else if (action === "Nossa Historia") {
+            navigate("/aboutwe")
+        }
+        else if (action === "Unidades") {
+            navigate("/units")
+        }
+        else if (action === "Novidades") {
+            scroller.scrollTo('CarouselInstaFeed', {
+                duration: 500,
+                smooth: 'easeInOutQuad',
+            });
+        }
+    }
 
 
     return (
@@ -80,11 +104,11 @@ export const Home: React.FC = () => {
                         return (
                             <Grid lg={3} md={4} xs={12} key={itemCard.title} sx={{ display: "flex", justifyContent: "center" }}>
                                 <Fade delay={index * 500} triggerOnce cascade damping={1e-1} style={{ zIndex: 10 + index, position: "relative", width: "100%", display: "flex", justifyContent: "center" }}>
-                                    <Paper sx={{
-                                        background: "#FB8423", display: "flex", width: "90%", height: "190px", cursor: "pointer", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center", padding: "10px", borderRadius: "15px", transition: "all .3s", "&:hover": {
+                                    <Button sx={{
+                                        background: "#FB8423", display: "flex", width: "100%", height: "190px", cursor: "pointer", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center", padding: "10px", borderRadius: "15px", transition: "all .3s", "&:hover": {
                                             background: "#aa5913"
                                         }
-                                    }} elevation={12}>
+                                    }} onClick={() => handleNavigate(itemCard.title)}>
                                         <Box component="img"
                                             src={`${itemCard.iconMain}`}
                                             alt={`${itemCard.title}`}
@@ -97,7 +121,7 @@ export const Home: React.FC = () => {
                                         <ListItemIcon sx={{ display: "flex", justifyContent: "center" }}>
                                             <Icon sx={{ fontSize: "2.2rem", color: "#fff", }}>{itemCard.iconArrow}</Icon>
                                         </ListItemIcon>
-                                    </Paper>
+                                    </Button>
                                 </Fade>
                             </Grid>
                         )
@@ -108,8 +132,7 @@ export const Home: React.FC = () => {
             </Container>
 
             <InfoAboutWe />
-
-            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", minHeight: "60vh", my: "30px" }}>
+            <Box id="CarouselInstaFeed" sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", minHeight: "60vh", my: "30px" }}>
                 <CarouselInstaFeed />
             </Box>
         </Box>

@@ -13,10 +13,10 @@ import { SkeletonCoponent } from "../../skeleton/Skeleton";
 
 
 interface ApiResponse {
-    id: string
-    media_type: string
-    media_url: string
-    permalink: string
+    id: string;
+    media_type: string;
+    media_url: string;
+    permalink: string;
 }
 
 

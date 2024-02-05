@@ -14,7 +14,7 @@ export const AboutWe: React.FC = () => {
             <ScrollRestoration />
             <LayoutSectionInitial background={aboutWeInitialSection} text="Conheça Nossa História" />
 
-            <Container sx={{ my: "30px" }}>
+            <Container sx={{ my: "50px" }}>
                 <Fade direction='up' triggerOnce>
                     <Typography component="h2" variant="h5" sx={{ textAlign: "center", fontWeight: "bold", my: "10px" }}>
                         Clinic Vale Laboratório de Análises Clínicas

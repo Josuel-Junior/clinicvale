@@ -89,7 +89,7 @@ export const NavBar: React.FC = () => {
         }
     }, 200);
 
-    const navigateButton = (buttonActive: string) => {
+    const handleNavigateButton = (buttonActive: string) => {
 
         console.log(buttonActive)
         setButtonActive(buttonActive)
@@ -220,7 +220,7 @@ export const NavBar: React.FC = () => {
                                 <Button
                                     variant="text"
                                     style={buttonStyle}
-                                    onClick={() => navigateButton("home")}
+                                    onClick={() => handleNavigateButton("home")}
                                     sx={{
                                         fontSize: ".8rem", color: buttonActive === "home" ? "#aa5913" : "#4f4f4f",
                                         transition: "all .3s",
@@ -239,7 +239,7 @@ export const NavBar: React.FC = () => {
                                     <Button
                                         variant="text"
                                         style={buttonStyle}
-                                        onClick={() => navigateButton("aboutwe")}
+                                        onClick={() => handleNavigateButton("aboutwe")}
 
                                         sx={{
                                             fontSize: ".8rem", color: buttonActive === "aboutwe" ? "#aa5913" : "#4f4f4f",
@@ -255,7 +255,7 @@ export const NavBar: React.FC = () => {
                                     </Button>
                                     <Collapse in={openMouseHover === "sobreNos"} sx={{ position: "absolute", background: "#fff" }}>
                                         {itemSubNavBar[0].map((element: string, index:number) => (
-                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element} onClick={()=>navigateButton(paramsNavigate[0][index])}>
+                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element} onClick={()=>handleNavigateButton(paramsNavigate[0][index])}>
                                                 {element}
                                             </MenuItem>
                                         ))}
@@ -308,7 +308,7 @@ export const NavBar: React.FC = () => {
                                 <Button
                                     variant="text"
                                     style={buttonStyle}
-                                    onClick={() => navigateButton("contact")}
+                                    onClick={() => handleNavigateButton("contact")}
                                     sx={{
                                         fontSize: ".8rem", color: buttonActive === "contact" ? "#aa5913" : "#4f4f4f",
                                         transition: "all .3s",
@@ -321,7 +321,7 @@ export const NavBar: React.FC = () => {
                                 >
                                     Contato
                                 </Button>
-                                <Button variant="contained" size="small">
+                                <Button variant="contained" size="small" href="https://portal.worklabweb.com.br/resultados-on-line/234" target="_blank">
                                     RESULTADO DE EXAMES
                                 </Button>
                             </Box>
