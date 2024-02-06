@@ -1,8 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
-import { Home,Contact, Units } from '../pages';
+import { Home, Contact, Units } from '../pages';
 import { AboutWe } from '../pages/About-we';
 import { Certification } from '../pages/Certification/Certification';
+import { ServicePeople } from '../pages/ServicePeople/ServicePeople';
 
 
 
@@ -16,7 +17,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  
+
     children: [
       {
         path: "/",
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/certification",
         element: <Certification />
+      },
+      {
+        path: "/servicepeople",
+        element: <ServicePeople />
       },
       {
         path: '*',

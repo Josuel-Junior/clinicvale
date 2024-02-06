@@ -152,7 +152,7 @@ export const NavBar: React.FC = () => {
         borderRadius: "0px"
     };
 
-    const paramsNavigate = [["aboutwe", "units"], []]
+    const paramsNavigate = [["aboutwe", "units"], ["servicepeople"]]
 
 
 
@@ -295,8 +295,8 @@ export const NavBar: React.FC = () => {
                                     </Button>
 
                                     <Collapse in={openMouseHover === "servicos"} sx={{ position: "absolute", background: "#fff" }}>
-                                        {itemSubNavBar[1].map((element: string) => (
-                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element}>
+                                        {itemSubNavBar[1].map((element: string, index: number) => (
+                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element} onClick={() => handleNavigateButton(paramsNavigate[1][index])}>
                                                 {element}
                                             </MenuItem>
                                         ))}
