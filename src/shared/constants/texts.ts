@@ -6,6 +6,9 @@ import newIcon from '../../assets/icons/new.png';
 
 import imagetest from "../../assets/images/conactImage.png"
 
+import iconPncq from "../../assets/icons/pncq.jpg"
+import dicq from "../../assets/icons/dicq.png"
+
 
 
 export const infoAboutCompany = [{ city: "Natércia - MG - Matriz", address: " Rua Pref. José Nacacio, 21 - Centro, Natércia - MG, 37524-000", call: "(35) 3456-1381", map: "https://maps.app.goo.gl/gqrJcopBqmxQySGo6", whatsapp: "3534561381", image: imagetest },
@@ -19,7 +22,7 @@ export const infoAboutCompany = [{ city: "Natércia - MG - Matriz", address: " R
 
 export const itemNavBar = ["Home", "Sobre Nós", "Exames", "Serviços", "Contato"]
 
-export const itemSubNavBar = [["Sobre Nós", "Certificados", "Unidades de coleta"], ["Atendimento domiciliar", "Coleta Empresarial"]];
+export const itemSubNavBar = [["Sobre Nós", "Unidades de coleta"], ["Atendimento domiciliar", "Coleta Empresarial"]];
 
 export const navigateDrawer = [
   { page: "Home", iconPage: "", navigate: "" },
@@ -31,3 +34,7 @@ export const navigateDrawer = [
 
 export const infoCardHome = [{ title: "Resultado de exames", iconMain: microscopio, iconArrow: "arrow_forward" },
 { title: "Nossa Historia", iconMain: book, iconArrow: "arrow_forward" }, { title: "Unidades", iconMain: location, iconArrow: "arrow_forward" }, { title: "Novidades", iconMain: newIcon, iconArrow: "arrow_forward" }]
+
+
+export const infoCertification = [{ certification: "Programa Nacional de Controle de Qualidade", iconCertification: iconPncq, text: "O PNCQ, Programa Nacional de Controle de Qualidade, é uma empresa técnico-científica provedora de ensaios de proficiência para Laboratórios Clínicos que auxilia e oferece opções para o aprimoramento da qualidade destas empresas." }
+  , { certification: "Sistema Nacional de Acreditação", iconCertification: dicq, text: "O DICQ Sistema Nacional de Acreditação é um programa da SBAC Sociedade Brasileira de Análises Clínicas que tem por objetivo a realização de inspeção, auditorias, credenciamento e acreditação do sistema da qualidade de Laboratórios Clínicos e de organizações prestadoras de serviços de saúde, através de critérios e requisitos próprios." }]

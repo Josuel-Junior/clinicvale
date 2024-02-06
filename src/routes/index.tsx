@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import { Home,Contact, Units } from '../pages';
 import { AboutWe } from '../pages/About-we';
+import { Certification } from '../pages/Certification/Certification';
 
 
 
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/aboutwe",
         element: <AboutWe />
+      },
+      {
+        path: "/certification",
+        element: <Certification />
       },
       {
         path: '*',

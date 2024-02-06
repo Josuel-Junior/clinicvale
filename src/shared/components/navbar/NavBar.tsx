@@ -37,7 +37,7 @@ interface IInfo {
     call: string;
     map: string;
     whatsapp: string;
-    image?:any
+    image?: any
 }
 
 export const NavBar: React.FC = () => {
@@ -90,8 +90,6 @@ export const NavBar: React.FC = () => {
     }, 200);
 
     const handleNavigateButton = (buttonActive: string) => {
-
-        console.log(buttonActive)
         setButtonActive(buttonActive)
         navigate(`/${buttonActive}`)
     }
@@ -154,10 +152,9 @@ export const NavBar: React.FC = () => {
         borderRadius: "0px"
     };
 
-    const paramsNavigate = [["aboutwe","certification","units"],[]]
+    const paramsNavigate = [["aboutwe", "units"], []]
 
-    
-    console.log(paramsNavigate[0][0])
+
 
     return (
         <AppBar sx={{ background: `${theme.palette.background.paper}`, display: "flex", alignItems: "center" }}>
@@ -254,8 +251,8 @@ export const NavBar: React.FC = () => {
                                         Sobre Nós
                                     </Button>
                                     <Collapse in={openMouseHover === "sobreNos"} sx={{ position: "absolute", background: "#fff" }}>
-                                        {itemSubNavBar[0].map((element: string, index:number) => (
-                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element} onClick={()=>handleNavigateButton(paramsNavigate[0][index])}>
+                                        {itemSubNavBar[0].map((element: string, index: number) => (
+                                            <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element} onClick={() => handleNavigateButton(paramsNavigate[0][index])}>
                                                 {element}
                                             </MenuItem>
                                         ))}
@@ -265,18 +262,18 @@ export const NavBar: React.FC = () => {
                                 <Button
                                     variant="text"
                                     style={buttonStyle}
-                                    onClick={() => setButtonActive("exames")}
+                                    onClick={() => handleNavigateButton("certification")}
                                     sx={{
-                                        fontSize: ".8rem", color: buttonActive === "exames" ? "#aa5913" : "#4f4f4f",
+                                        fontSize: ".8rem", color: buttonActive === "certification" ? "#aa5913" : "#4f4f4f",
                                         transition: "all .3s",
                                         "&:hover": {
                                             color: "#aa5913",
                                         },
-                                        borderBottom: buttonActive === "exames" ? 1 : 0,
+                                        borderBottom: buttonActive === "certification" ? 1 : 0,
                                         borderColor: "#aa5913", fontWeight: "bold"
                                     }}
                                 >
-                                    Exames
+                                    Certificados
                                 </Button>
                                 <Box key="Serviços" onMouseEnter={() => handleMouseHover("servicos")}
                                     onMouseLeave={() => handleMouseHover(null)}>
