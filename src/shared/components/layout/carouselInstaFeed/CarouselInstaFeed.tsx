@@ -102,9 +102,9 @@ export const CarouselInstaFeed: React.FC = () => {
                     modules={[Pagination, Autoplay]}
                     className="mySwiper"
                 >
-                    {dataInstaFeed?.map((element: ApiResponse, index: number) => {
+                    {dataInstaFeed?.map((element: ApiResponse) => {
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide key={element.id}>
                                 <Link href={element.permalink} target="_blank" rel="noopener noreferrer">
                                     <Box component="img" src={element.media_url} sx={{ width: "100%", height: "100%", borderRadius: "10px" }} />
                                 </Link>

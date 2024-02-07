@@ -69,7 +69,7 @@ export const CarouselComponent: React.FC = () => {
             {
                 imageCrousel.map((itemImage: IImagesCarousel) => {
                     return (
-                        <Box>
+                        <Box key={itemImage.description}>
                             <Box
                                 component="img"
                                 src={itemImage.image}

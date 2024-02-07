@@ -152,7 +152,7 @@ export const NavBar: React.FC = () => {
         borderRadius: "0px"
     };
 
-    const paramsNavigate = [["aboutwe", "units"], ["servicepeople"]]
+    const paramsNavigate = [["aboutwe", "units"], ["servicepeople", "serviceforcompany"]]
 
 
 
@@ -275,26 +275,26 @@ export const NavBar: React.FC = () => {
                                 >
                                     Certificados
                                 </Button>
-                                <Box key="Serviços" onMouseEnter={() => handleMouseHover("servicos")}
+                                <Box key="Serviços" onMouseEnter={() => handleMouseHover("servicepeople")}
                                     onMouseLeave={() => handleMouseHover(null)}>
                                     <Button
                                         variant="text"
                                         style={buttonStyle}
-                                        onClick={() => setButtonActive("servicos")}
+                                        onClick={() => handleNavigateButton("servicepeople")}
                                         sx={{
-                                            fontSize: ".8rem", color: buttonActive === "servicos" ? "#aa5913" : "#4f4f4f",
+                                            fontSize: ".8rem", color: buttonActive === "servicepeople" ? "#aa5913" : "#4f4f4f",
                                             transition: "all .3s",
                                             "&:hover": {
                                                 color: "#aa5913",
                                             },
-                                            borderBottom: buttonActive === "servicos" ? 1 : 0,
+                                            borderBottom: buttonActive === "servicepeople" ? 1 : 0,
                                             borderColor: "#aa5913", fontWeight: "bold"
                                         }}
                                     >
                                         Serviços
                                     </Button>
 
-                                    <Collapse in={openMouseHover === "servicos"} sx={{ position: "absolute", background: "#fff" }}>
+                                    <Collapse in={openMouseHover === "servicepeople"} sx={{ position: "absolute", background: "#fff" }}>
                                         {itemSubNavBar[1].map((element: string, index: number) => (
                                             <MenuItem disableRipple sx={{ fontSize: ".9rem" }} key={element} onClick={() => handleNavigateButton(paramsNavigate[1][index])}>
                                                 {element}

@@ -4,6 +4,7 @@ import certificationtImageInitialSection from "../../assets/images/certification
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
 import { infoCertification } from "../../shared/constants/texts"
 import { Slide } from "react-awesome-reveal"
+import { ScrollRestoration } from "react-router-dom"
 
 
 
@@ -23,11 +24,12 @@ export const Certification: React.FC = () => {
 
     return (
         <Box>
+            <ScrollRestoration />
             <LayoutSectionInitial background={certificationtImageInitialSection} text="Certificações de Qualidade" subText=" Nosso compromisso com a excelência é respaldado por uma série de certificações reconhecidas internacionalmente. " />
             <Container>
                 <Grid container>
                     {infoCertification.map((itemCertication: ICertification) => (
-                        <Slide triggerOnce>
+                        <Slide triggerOnce key={itemCertication.text}>
                             <Grid md={12} sx={{ display: "flex", alignItems: "center", my: "20px", boxShadow: 3, flexDirection: isMatch ? "column" : "flex" }} key={itemCertication.text}>
                                 <Box component="img" src={itemCertication.iconCertification} sx={{ p: "10px" }} />
                                 <Box sx={{ p: "15px" }}>

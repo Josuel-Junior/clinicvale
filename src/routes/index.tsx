@@ -4,6 +4,7 @@ import { Home, Contact, Units } from '../pages';
 import { AboutWe } from '../pages/About-we';
 import { Certification } from '../pages/Certification/Certification';
 import { ServicePeople } from '../pages/ServicePeople/ServicePeople';
+import { ServiceForCompany } from '../pages/ServiceForCompany';
 
 
 
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: "/servicepeople",
         element: <ServicePeople />
+      },
+      {
+        path: "/serviceforcompany",
+        element: <ServiceForCompany />
       },
       {
         path: '*',
