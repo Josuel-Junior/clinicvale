@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Button, Container, Divider, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Button, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 
 
 import { Fade } from "react-awesome-reveal";
@@ -34,8 +34,8 @@ export const DisplayDetailsCard: React.FC<IDetailsCard> = ({ details }) => {
             {details.map((laboratory: IInfo, id: React.Key) => {
                 const idNumber = Number(id)
                 return (
-                    <Fade direction={idNumber % 2 === 0 ? "left" : "right"} triggerOnce={true}>
-                        <Grid container sx={{ minHeight: "50vh", my: "20px", boxShadow: 5 }} key={id}>
+                    <Fade direction={idNumber % 2 === 0 ? "left" : "right"} triggerOnce={true} key={id}>
+                        <Grid container sx={{ minHeight: "50vh", my: "20px", boxShadow: 5 }} >
                             {idNumber % 2 === 0 && (
                                 <Grid lg={6} xs={12} sx={{ display: "flex", justifyContent: "start", alignItems: "center", background: "", padding: "30px" }}>
                                     <Fade direction={idNumber % 2 === 0 ? "left" : "right"} triggerOnce={true}>

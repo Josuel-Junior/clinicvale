@@ -105,8 +105,8 @@ export const CarouselInstaFeed: React.FC = () => {
                     {dataInstaFeed?.map((element: ApiResponse) => {
                         return (
                             <SwiperSlide key={element.id}>
-                                <Link href={element.permalink} target="_blank" rel="noopener noreferrer">
-                                    <Box component="img" src={element.media_url} sx={{ width: "100%", height: "100%", borderRadius: "10px" }} />
+                                <Link href={element.permalink} target="_blank" rel="noopener noreferrer" aria-label={element.id}>
+                                    <Box component="img" src={element.media_url} sx={{ width: "100%", height: "100%", borderRadius: "10px" }} alt={element.id} loading="lazy"/>
                                 </Link>
                             </SwiperSlide>
                         )

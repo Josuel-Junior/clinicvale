@@ -1,8 +1,8 @@
 import React from "react";
 import { LayoutSectionInitial } from "../../shared/components/layout/layoutInitialSection/LayoutSectionInitial";
-import imageAboutServicesForCompany from "../../assets/images/image_about_services_sor_company.png"
+import imageAboutServicesForCompany from "../../assets/images/image-about-services-sor-company.webp"
 import { Box } from "@mui/material";
-import imageBackground from "../../assets/images//service_for_company_image_initial.png"
+import imageBackground from "../../assets/images//service_for_company_image_initial.webp"
 import { InfoService } from "../../shared/components/infoService/InfoService";
 import { ContactComponent } from "../../shared/components/contactComponent/ContactComponent";
 import { ScrollRestoration } from "react-router-dom";
@@ -14,7 +14,7 @@ export const ServiceForCompany: React.FC = () => {
 
 
     return (
-        <Box>
+        <Box sx={{width:"100vw"}}>
             <ScrollRestoration />
             <LayoutSectionInitial background={imageBackground} text="Atendimento Empresarial" />
             <InfoService

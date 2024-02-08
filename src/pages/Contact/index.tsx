@@ -1,4 +1,4 @@
-import slide_carousel2 from "../../assets/images/contactImageInitialSection.png"
+import slide_carousel2 from "../../assets/images/contactimageinitialsection.webp"
 import { Box } from "@mui/material"
 import { LayoutSectionInitial } from '../../shared/components/layout/layoutInitialSection/LayoutSectionInitial';
 import { ScrollRestoration } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { ContactComponent } from '../../shared/components/contactComponent/Conta
 
 export const Contact: React.FC = () => {
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width:"100vw" }}>
             <ScrollRestoration />
 
             <LayoutSectionInitial background={slide_carousel2} text="Entre em contato" subText='Nossa equipe de profissionais está pronta para atendê-lo.' />

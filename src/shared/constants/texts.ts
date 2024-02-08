@@ -1,13 +1,12 @@
-import microscopio from '../../assets/icons/microscopio.png';
-import book from '../../assets/icons/e-book.png';
-import location from '../../assets/icons/location.png';
-import newIcon from '../../assets/icons/new.png';
+import microscopio from '../../assets/icons//microscopio.svg';
+import book from '../../assets/icons/e-book.svg';
+import location from '../../assets/icons/location.svg';
+import newIcon from '../../assets/icons/new.svg';
 
 
-import imagetest from "../../assets/images/conactImage.png"
-
-import iconPncq from "../../assets/icons/pncq.jpg"
-import dicq from "../../assets/icons/dicq.png"
+import imagetest from "../../assets/images/conactImage.webp"
+import iconPncq from "../../assets/icons/pncq.webp"
+import dicq from "../../assets/icons/dicq.webp"
 
 
 
@@ -25,11 +24,14 @@ export const itemNavBar = ["Home", "Sobre Nós", "Exames", "Serviços", "Contato
 export const itemSubNavBar = [["Sobre Nós", "Unidades de coleta"], ["Atendimento domiciliar", "Coleta Empresarial"]];
 
 export const navigateDrawer = [
-  { page: "Home", iconPage: "", navigate: "" },
-  { page: "Sobre nós", iconPage: "", navigate: "aboutwe" },
-  { page: "Exames", iconPage: "", navigate: "exams" },
-  { page: "Serviços", iconPage: "", navigate: "services" },
-  { page: "Contato", iconPage: "", navigate: "contact" },
+  { page: "Home", navigate: "/" },
+  { page: "Sobre nós", navigate: "aboutwe" },
+  { page: "Certificados", navigate: "certification" },
+  { page: "Unidades de coleta", navigate: "units" },
+  { page: "Atendimento Domiciliar", navigate: "servicepeople" },
+  { page: "Coleta Empresarial", navigate: "serviceforcompany" },
+  { page: "Contato", navigate: "contact" },
+
 ]
 
 export const infoCardHome = [{ title: "Resultado de exames", iconMain: microscopio, iconArrow: "arrow_forward" },

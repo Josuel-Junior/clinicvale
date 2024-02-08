@@ -1,4 +1,4 @@
-import { Box, Button, Icon, ListItemIcon, Typography, useTheme, useMediaQuery, Container, Paper } from "@mui/material"
+import { Box, Button, Icon, ListItemIcon, Typography, Container} from "@mui/material"
 import { CarouselComponent } from "../../shared/components/layout/carousel/CarouselComponent"
 import { Fade, Slide } from "react-awesome-reveal"
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
@@ -21,9 +21,7 @@ interface infoCard {
 
 export const Home: React.FC = () => {
 
-    const theme = useTheme();
-
-    const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  
 
     const navigate = useNavigate()
 
@@ -47,11 +45,10 @@ export const Home: React.FC = () => {
 
 
     return (
-        <Box>
+        <Box sx={{width:"100vw"}}>
             <ScrollRestoration />
             <Box sx={{ position: "relative" }}>
-                <CarouselComponent>
-                </CarouselComponent>
+                <CarouselComponent />
                 <Box sx={{
                     position: 'absolute',
                     top: "50%",
@@ -111,14 +108,14 @@ export const Home: React.FC = () => {
                                     }} onClick={() => handleNavigate(itemCard.title)}>
                                         <Box component="img"
                                             src={`${itemCard.iconMain}`}
-                                            alt={`${itemCard.title}`}
+                                            alt={`Ícone de ${itemCard.title} da página`}
                                             sx={{ width: "60px" }}
                                             loading="lazy"
                                         />
                                         <Typography sx={{ color: "#fff", textTransform: "uppercase", fontSize: "1.3rem" }}>
                                             {itemCard.title}
                                         </Typography>
-                                        <ListItemIcon sx={{ display: "flex", justifyContent: "center" }}>
+                                        <ListItemIcon sx={{ display: "flex", justifyContent: "center" }} >
                                             <Icon sx={{ fontSize: "2.2rem", color: "#fff", }}>{itemCard.iconArrow}</Icon>
                                         </ListItemIcon>
                                     </Button>
@@ -132,6 +129,7 @@ export const Home: React.FC = () => {
             </Container>
 
             <InfoAboutWe />
+
             <Box id="CarouselInstaFeed" sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", minHeight: "60vh", my: "30px" }}>
                 <CarouselInstaFeed />
             </Box>

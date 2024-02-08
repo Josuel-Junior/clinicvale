@@ -1,7 +1,7 @@
 import { Box, Button, Container, Divider, Typography } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
 import { Slide } from "react-awesome-reveal"
-import contactImage from "../../../assets/images/conactImage.png"
+import contactImage from "../../../assets/images/conactImage.webp"
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';

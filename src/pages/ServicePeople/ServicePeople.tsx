@@ -1,8 +1,8 @@
 import React from "react";
 import { LayoutSectionInitial } from "../../shared/components/layout/layoutInitialSection/LayoutSectionInitial";
-import servicePeopleImageInitialSection from "../../assets/images/servicePeopleImageInitialSection.png"
+import servicePeopleImageInitialSection from "../../assets/images/servicePeopleImageInitialSection.webp"
 import { Box } from "@mui/material";
-import imageService from "../../assets/images/imageAboutServicesPeople.png"
+import imageService from "../../assets/images/imageAboutServicesPeople.webp"
 import { InfoService } from "../../shared/components/infoService/InfoService";
 import { ContactComponent } from "../../shared/components/contactComponent/ContactComponent";
 import { ScrollRestoration } from "react-router-dom";
@@ -10,7 +10,7 @@ import { ScrollRestoration } from "react-router-dom";
 export const ServicePeople: React.FC = () => {
 
     return (
-        <Box>
+        <Box sx={{width:"100vw"}}>
             <LayoutSectionInitial background={servicePeopleImageInitialSection} text="Atendimento Domiciliar" />
             <ScrollRestoration />
             <InfoService
@@ -19,9 +19,6 @@ export const ServicePeople: React.FC = () => {
                 image={imageService}
             />
             <ContactComponent showText={false} />
-
         </Box>
-
-
     )
 }

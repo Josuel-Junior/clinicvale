@@ -1,7 +1,7 @@
 import { LayoutSectionInitial } from "../../shared/components/layout/layoutInitialSection/LayoutSectionInitial"
 import { ScrollRestoration } from "react-router-dom";
 
-import aboutWeInitialSection from "../../assets/images/aboutWeInitialSection.png"
+import aboutWeInitialSection from "../../assets/images/aboutWeInitialSection.webp"
 import { Box, Container, Typography } from "@mui/material"
 import { Fade } from "react-awesome-reveal"
 
@@ -10,7 +10,7 @@ export const AboutWe: React.FC = () => {
 
     return (
 
-        <Box>
+        <Box sx={{width:"100vw"}}>
             <ScrollRestoration />
             <LayoutSectionInitial background={aboutWeInitialSection} text="Conheça Nossa História" />
 

@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import InfoAboutWeImage from "../../../assets/images/InfoAboutWeImage.png"
+import InfoAboutWeImage from "../../../assets/images/InfoAboutWeImage.webp"
 
 
 
@@ -37,7 +37,7 @@ export const InfoAboutWe: React.FC = () => {
 
                             }, mt: "5px", color: "#fff"
                         }}>
-                            No LABORATÓRIO CLINIC VALE, estabelecemos uma extensa rede de unidades de coleta, garantindo ampla cobertura para atender às necessidades de nossos pacientes. Nossa presença estratégica visa proporcionar conveniência e acessibilidade a todos, assegurando que nossos serviços estejam disponíveis para todos. Contamos com equipes altamente especializadas, dedicadas a oferecer um atendimento atencioso e eficiente a cada indivíduo que confia em nossos serviços.
+                            Nós, da Clinic Vale, estabelecemos uma ampla rede de unidades de coleta, garantindo uma cobertura abrangente para atender às necessidades dos nossos pacientes. Nossa presença estratégica visa proporcionar conveniência e acessibilidade a todos, assegurando que nossos serviços estejam disponíveis para todos. Contamos com equipes altamente especializadas, dedicadas a oferecer um atendimento atencioso e eficiente a cada indivíduo que confia em nossos serviços.
                         </Typography>
                     </Container>
                 </Box>

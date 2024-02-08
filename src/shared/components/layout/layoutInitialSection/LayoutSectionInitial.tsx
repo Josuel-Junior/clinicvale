@@ -24,7 +24,7 @@ export const LayoutSectionInitial: React.FC<ILayoutSectionInitial> = ({ backgrou
                             fontWeight: "bold",
                             textAlign: 'center',
                             fontSize: {
-                                xs: "1rem",
+                                xs: "1.3rem",
                                 sm: "1.5rem",
                                 md: "1.7rem",
 

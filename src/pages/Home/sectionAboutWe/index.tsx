@@ -1,12 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
 
-import aboutWeImage from "../../../assets/images/aboutWeImage.png"
-import InfoAboutWeImage from "../../../assets/images/InfoAboutWeImage.png"
+import aboutWeImage from "../../../assets/images/aboutWeImage.webp"
 
 import { Fade, Slide } from "react-awesome-reveal"
 
-import { Parallax } from 'react-parallax';
+
 
 import React from "react";
 

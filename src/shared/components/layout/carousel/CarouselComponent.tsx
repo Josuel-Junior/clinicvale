@@ -4,18 +4,18 @@ import Carousel from 'react-material-ui-carousel'
 import { Box, useMediaQuery, useTheme } from '@mui/material'
 
 
-import slide_carousel_mobile1 from "../../../../assets/images/slide_carousel_mobile1.png"
-import slide_carousel_mobile2 from "../../../../assets/images/slide_carousel_mobile2.png"
-import slide_carousel_mobile3 from "../../../../assets/images/slide_carousel_mobile3.png"
-import slide_carousel_mobile4 from "../../../../assets/images/slide_carousel_mobile4.png"
+import slide_carousel_mobile1 from "../../../../assets/images/slide_carousel_mobile1.webp"
+import slide_carousel_mobile2 from "../../../../assets/images/slide_carousel_mobile2.webp"
+import slide_carousel_mobile3 from "../../../../assets/images/slide_carousel_mobile3.webp"
+import slide_carousel_mobile4 from "../../../../assets/images/slide_carousel_mobile4.webp"
 
 
 
 
-import slide_carousel1 from "../../../../assets/images/slide_carousel1.png"
-import slide_carousel2 from "../../../../assets/images/slide_carousel2.png"
-import slide_carousel3 from "../../../../assets/images/slide_carousel3.png"
-import slide_carousel4 from "../../../../assets/images/slide_carousel4.png"
+import slide_carousel1 from "../../../../assets/images/slide_carousel1.webp"
+import slide_carousel2 from "../../../../assets/images/slide_carousel2.webp"
+import slide_carousel3 from "../../../../assets/images/slide_carousel3.webp"
+import slide_carousel4 from "../../../../assets/images/slide_carousel4.webp"
 
 
 
@@ -76,6 +76,7 @@ export const CarouselComponent: React.FC = () => {
                                 alt={itemImage.description}
                                 key={itemImage.description}
                                 sx={{ height: '80vh', width: '100%', filter: "brightness(40%)" }}
+                                loading='lazy'
                             />
                         </Box>
                     )

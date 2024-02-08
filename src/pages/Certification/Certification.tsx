@@ -1,6 +1,6 @@
 import { Box, Container, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { LayoutSectionInitial } from "../../shared/components/layout/layoutInitialSection/LayoutSectionInitial"
-import certificationtImageInitialSection from "../../assets/images/certificationtImageInitialSection.png"
+import certificationtImageInitialSection from "../../assets/images/certificationtImageInitialSection.webp"
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
 import { infoCertification } from "../../shared/constants/texts"
 import { Slide } from "react-awesome-reveal"
@@ -23,7 +23,7 @@ export const Certification: React.FC = () => {
 
 
     return (
-        <Box>
+        <Box sx={{width:"100vw"}}>
             <ScrollRestoration />
             <LayoutSectionInitial background={certificationtImageInitialSection} text="Certificações de Qualidade" subText=" Nosso compromisso com a excelência é respaldado por uma série de certificações reconhecidas internacionalmente. " />
             <Container>

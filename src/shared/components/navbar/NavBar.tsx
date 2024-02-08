@@ -204,8 +204,8 @@ export const NavBar: React.FC = () => {
                 </Box>
             </Collapse>
             <Divider color="primary" />
-            <Box maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", width: "100%", background: "" }}>
-                <Box component="img" src={`${Logo}`} sx={{ width: isMatch ? "200px" : "170px", mt: isMatch ? "0px" : "0px", ml: "10px", background: "", height: "45px" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
+            <Box maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", width: "100%",alignItems:"center", background: "" }}>
+                <Box component="img" src={`${Logo}`} sx={{  ml: "10px", my:"5px", height: "40px" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
                 {
                     isMatch ? (
                         <Box sx={{ display: "flex" }}>
