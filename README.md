@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+# Portfólio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Sobre o projeto
 
-Currently, two official plugins are available:
+https://www.laboratorioclinicvale.com.br/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ 
+Projeto desenvolvido para a empresa Clinic Vale, onde foi solicitada a integração com a API do Instagram para exibir postagens em tempo real. 
 
-## Expanding the ESLint configuration
+## Layout web
+![Web](https://www.datocms-assets.com/115877/1708378691-clinic-certo.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+# Sobre a criação do projeto
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Material-UI
+
+Os componentes estilizados do Material-UI contribuíram para um layout 
+web moderno e responsivo, garantindo uma experiência única.
+
+### Typescript
+
+O TypeScript desempenhou um papel crucial na criação de um código robusto e sólido.
+
+
+### Graph API
+
+Para integrar o Instagram ao site, utilizamos a GraphAPI fornecida pelo Meta. Essa API permite acessar as imagens do Instagram do cliente.
+
+
+# Tecnologias e bibliotecas utilizadas
+
+- HTML / CSS / JS
+- ReactJS
+- Material UI
+- Typescript
+- GraphAPI
+
+
+# clonar repositório
+https://github.com/Josuel-Junior/clinicvale
+
+
+# Autor
+
+Josuel Junior Fonseca Carneiro
