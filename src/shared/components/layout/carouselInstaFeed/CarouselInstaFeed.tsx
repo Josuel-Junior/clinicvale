@@ -10,17 +10,56 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { SkeletonCoponent } from "../../skeleton/Skeleton";
 
+import { v4 as uuidv4 } from 'uuid';
+
+import insfeed01 from "../../../../assets/images/instafeed01.webp";
+import insfeed02 from "../../../../assets/images/instafeed02.webp";
+import insfeed03 from "../../../../assets/images/instafeed03.webp";
+import insfeed04 from "../../../../assets/images/instafeed04.webp";
+import insfeed05 from "../../../../assets/images/instafeed05.webp";
+import insfeed06 from "../../../../assets/images/instafeed06.webp";
+import insfeed07 from "../../../../assets/images/instafeed07.webp";
+import insfeed08 from "../../../../assets/images/instafeed08.webp";
+
 interface ApiResponse {
-  id: string;
-  media_type: string;
-  media_url: string;
-  permalink: string;
+  image: string;
+  media_type?: string;
 }
 
 export const CarouselInstaFeed: React.FC = () => {
   const [dataInstaFeed, setDataInstaFeed] = useState<ApiResponse[]>();
 
   const [loading, setLoading] = useState<boolean>(true);
+
+
+  const keyID = uuidv4();
+
+  const imageInstafeed = [
+    {
+      image: insfeed01,
+    },
+    {
+      image: insfeed02,
+    },
+    {
+      image: insfeed03,
+    },
+    {
+      image: insfeed04,
+    },
+    {
+      image: insfeed05,
+    },
+    {
+      image: insfeed06,
+    },
+    {
+      image: insfeed07,
+    },
+    {
+      image: insfeed08,
+    },
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +88,7 @@ export const CarouselInstaFeed: React.FC = () => {
     fetchData();
   }, []);
 
-  if (loading) {
+  if (!loading) {
     return (
       <SkeletonCoponent
         heightSkeleton={230}
@@ -105,20 +144,18 @@ export const CarouselInstaFeed: React.FC = () => {
           modules={[Pagination, Autoplay]}
           className="mySwiper"
         >
-          {dataInstaFeed?.map((element: ApiResponse) => {
+          {imageInstafeed?.map((element: ApiResponse) => {
             return (
-              <SwiperSlide key={element.id}>
+              <SwiperSlide key={keyID}>
                 <Link
-                  href={element.permalink}
+                  href={"https://www.instagram.com/laboratorioclinicvale/?igsh=ajlodGE3ZmQ3NXZw#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={element.id}
                 >
                   <Box
                     component="img"
-                    src={element.media_url}
+                    src={element.image}
                     sx={{ width: "100%", height: "100%", borderRadius: "10px" }}
-                    alt={element.id}
                     loading="lazy"
                   />
                 </Link>
