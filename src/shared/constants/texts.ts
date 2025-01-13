@@ -24,7 +24,7 @@ export const itemNavBar = ["Home", "Sobre Nós", "Exames", "Serviços", "Contato
 export const itemSubNavBar = [["Sobre Nós", "Unidades de coleta"], ["Atendimento domiciliar", "Coleta Empresarial"]];
 
 export const navigateDrawer = [
-  { page: "Home", navigate: "/" },
+  { page: "Home", navigate: "/home" },
   { page: "Sobre nós", navigate: "aboutwe" },
   { page: "Certificados", navigate: "certification" },
   { page: "Unidades de coleta", navigate: "units" },

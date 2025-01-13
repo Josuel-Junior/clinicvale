@@ -7,12 +7,6 @@ import { ServicePeople } from '../pages/ServicePeople/ServicePeople';
 import { ServiceForCompany } from '../pages/ServiceForCompany';
 
 
-
-const ScrollToTop = () => {
-  window.scrollTo(0, 0);
-  return null;
-};
-
 export const router = createBrowserRouter([
 
   {

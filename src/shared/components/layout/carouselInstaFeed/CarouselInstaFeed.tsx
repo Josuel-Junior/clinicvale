@@ -1,6 +1,6 @@
-import { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
-import { Api } from "../../../services/api/Api";
+// import { AxiosResponse } from "axios";
+// import { useEffect, useState } from "react";
+// import { Api } from "../../../services/api/Api";
 import { Box, Container, Link, Typography } from "@mui/material";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,7 +8,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { SkeletonCoponent } from "../../skeleton/Skeleton";
+// import { SkeletonCoponent } from "../../skeleton/Skeleton";
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -27,12 +27,12 @@ interface ApiResponse {
 }
 
 export const CarouselInstaFeed: React.FC = () => {
-  const [dataInstaFeed, setDataInstaFeed] = useState<ApiResponse[]>();
+  // const [dataInstaFeed, setDataInstaFeed] = useState<ApiResponse[]>();
 
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
 
 
-  const keyID = uuidv4();
+ 
 
   const imageInstafeed = [
     {
@@ -61,42 +61,42 @@ export const CarouselInstaFeed: React.FC = () => {
     },
   ];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const token = import.meta.env.VITE_TOKEN_INSTA;
-      const fields = "media_url,media_type,permalink";
-      try {
-        const response: AxiosResponse = await Api.get("access_token=", {
-          params: {
-            access_token: token,
-            fields: fields,
-          },
-        });
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const token = import.meta.env.VITE_TOKEN_INSTA;
+  //     const fields = "media_url,media_type,permalink";
+  //     try {
+  //       const response: AxiosResponse = await Api.get("access_token=", {
+  //         params: {
+  //           access_token: token,
+  //           fields: fields,
+  //         },
+  //       });
 
-        const { data } = response.data;
-        const images = data.filter(
-          (dataApi: ApiResponse) => dataApi.media_type === "IMAGE"
-        );
-        setDataInstaFeed(images.slice(0, 9));
+  //       const { data } = response.data;
+  //       const images = data.filter(
+  //         (dataApi: ApiResponse) => dataApi.media_type === "IMAGE"
+  //       );
+  //       setDataInstaFeed(images.slice(0, 9));
 
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  if (!loading) {
-    return (
-      <SkeletonCoponent
-        heightSkeleton={230}
-        widthSkeleton={220}
-        numberOfSkeleton={4}
-      />
-    );
-  }
+  // if (!loading) {
+  //   return (
+  //     <SkeletonCoponent
+  //       heightSkeleton={230}
+  //       widthSkeleton={220}
+  //       numberOfSkeleton={4}
+  //     />
+  //   );
+  // }
 
   return (
     <Box sx={{ width: "100vw" }} maxWidth="lg">
@@ -146,7 +146,7 @@ export const CarouselInstaFeed: React.FC = () => {
         >
           {imageInstafeed?.map((element: ApiResponse) => {
             return (
-              <SwiperSlide key={keyID}>
+              <SwiperSlide key={uuidv4()}>
                 <Link
                   href={"https://www.instagram.com/laboratorioclinicvale/?igsh=ajlodGE3ZmQ3NXZw#"}
                   target="_blank"

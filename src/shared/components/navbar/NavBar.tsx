@@ -205,7 +205,15 @@ export const NavBar: React.FC = () => {
             </Collapse>
             <Divider color="primary" />
             <Box maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", width: "100%",alignItems:"center", background: "" }}>
-                <Box component="img" src={`${Logo}`} sx={{  ml: "10px", my:"5px", height: "40px" }} alt="Ícone Clinic Vale Laboratório" loading="lazy" />
+            <Button onClick={() => navigate("/")}>
+            <Box
+              component="img"
+              src={`${Logo}`}
+              sx={{ ml: "10px", my: "5px", height: "40px" }}
+              alt="Ícone Clinic Vale Laboratório"
+              loading="lazy"
+                />
+            </Button>
                 {
                     isMatch ? (
                         <Box sx={{ display: "flex" }}>
